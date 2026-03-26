@@ -111,7 +111,7 @@ a:hover{text-decoration:underline}
   <div class="panels">
     <div class="panel">
       <div class="panel-hdr"><span class="picon">📋</span><span class="ptitle">Quotes</span></div>
-      <div class="panel-row"><a href="#">New Quote Request</a><span class="bdg">4</span></div>
+      <div class="panel-row"><a href="quotes.html">New Quote Request</a><span class="bdg">4</span></div>
       <div class="panel-row"><a href="#">Quotes In Progress</a><span class="bdg bdg-o">7</span></div>
     </div>
     <div class="panel">
@@ -369,14 +369,14 @@ function render(){
       if(s.length>0){
         ex.innerHTML='<td colspan="7" style="padding:0"><table style="width:100%;border-collapse:collapse;font-size:11px">'+
           '<thead><tr style="background:#cde8a8;border-bottom:1px solid #b5d890">'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">Date Ordered</th>'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">Quote No</th>'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">Purchaser</th>'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">Order</th>'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">ETA</th>'+
-          '<th style="padding:4px 8px;text-align:left;font-size:11px">Status</th>'+
-          '<th style="padding:4px 8px;text-align:center;font-size:11px">Print</th>'+
-          '<th style="padding:4px 8px;text-align:center;font-size:11px">Open</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">Date Ordered</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">Quote No</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">Purchaser</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">Order</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">ETA</th>'+
+          '<th style="padding:9px 8px;text-align:left;font-size:11px">Status</th>'+
+          '<th style="padding:9px 8px;text-align:center;font-size:11px">Print</th>'+
+          '<th style="padding:9px 8px;text-align:center;font-size:11px">Open</th>'+
           '</tr></thead><tbody>'+
           s.map(function(d,i){
             var bg = i%2===0 ? '#eaf7d8' : '#d6f0b8';
