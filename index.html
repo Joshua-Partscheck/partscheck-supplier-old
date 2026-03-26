@@ -2,79 +2,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:#efefef}
-body{font-family:Arial,Helvetica,sans-serif;font-size:12px;background:#efefef;width:888px;margin:0 auto}
+html,body{background:#efefef}
+body{font-family:Arial,Helvetica,sans-serif;font-size:12px;width:888px;margin:0 auto}
 a{color:#0645ad;text-decoration:none}
 a:hover{text-decoration:underline}
-
 .wrap{background:#efefef;padding:5px;border:1px solid #ccc}
-
-/* TOP BAR */
-.topbar{background:#efefef;padding:4px 10px;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:6px}
-.logo-sq{width:26px;height:26px;background:#5a9e2f;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:bold}
-.logo-name{color:#fff;font-size:13px;font-weight:bold;letter-spacing:1px}
-.logo-tag{color:#c8e0f4;font-size:8px;display:block}
+.topbar{padding:6px 4px;display:flex;align-items:center;justify-content:space-between}
 .topnav{display:flex;gap:12px}
-.topnav a{color:#fff;font-size:11px;display:flex;align-items:center;gap:3px}
+.topnav a{color:#000;font-size:13px;display:flex;align-items:center;gap:3px}
 .searchbar{display:flex;gap:2px}
 .searchbar input{padding:2px 6px;font-size:11px;border:1px solid #ccc;width:120px}
 .searchbar button{background:#5588bb;border:1px solid #3a6a99;color:#fff;padding:2px 8px;font-size:11px;cursor:pointer}
-
-/* PANELS */
-.panels{display:flex;gap:3px;margin-top:4px;align-items:flex-start}
+.panels{display:flex;gap:3px;margin-top:4px;align-items:flex-start;margin-bottom:24px}
 .panel{border:1px solid #aaa;border-radius:3px;overflow:hidden;background:#fff;flex:1}
-.panel-hdr{padding:5px 8px;display:flex;align-items:center;gap:6px}
-.panel-hdr .ptitle{color:#fff;font-size:12px;font-weight:bold}
-.panel-hdr .picon{font-size:16px}
-.ph-blue{background:linear-gradient(to bottom,#5296cc,#2b6cb0)}
-.ph-orange{background:linear-gradient(to bottom,#f0a020,#c07808)}
-.ph-green{background:linear-gradient(to bottom,#6abe38,#3d8818)}
-.ph-teal{background:linear-gradient(to bottom,#7ab8cc,#4a88a8)}
-.panel-row{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px dashed #d0d0d0;font-size:11px;color:#333}
+.panel-hdr{padding:6px 8px;display:flex;align-items:center;gap:6px;background:linear-gradient(to bottom,#5296cc,#2b6cb0)}
+.panel-hdr .ptitle{color:#fff;font-size:15px;font-weight:bold}
+.panel-hdr .picon{font-size:18px;display:flex;align-items:center}
+.panel-row{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px dashed #d0d0d0;font-size:12px}
 .panel-row:last-child{border-bottom:none}
 .panel-row a{color:#333;font-size:12px}
 .panel-row a:hover{text-decoration:underline;color:#0645ad}
-.bdg{display:inline-block;background:#cc2200;color:#fff;font-size:9px;border-radius:10px;padding:1px 6px;min-width:16px;text-align:center;line-height:14px}
-.bdg-o{background:#dd7700}
-
-/* CONTENT */
-.content{background:#fff;padding:6px;margin-top:0}
-
-/* FILTER */
-.filterbox{background:#fff;border:none;padding:16px 14px;margin-bottom:8px;display:flex;flex-direction:column;gap:24px}
+.bdg{display:inline-block;background:linear-gradient(to bottom,#ff6644,#aa1100);color:#fff;font-size:12px;border-radius:10px;padding:3px 10px;min-width:28px;text-align:center;line-height:16px}
+.bdg-o{background:linear-gradient(to bottom,#ffaa44,#cc6600)}
+.content{background:#fff;padding:6px}
+.filterbox{background:#fff;padding:16px 14px;margin-bottom:8px;display:flex;flex-direction:column;gap:24px}
 .fg{display:flex;flex-direction:column;gap:8px}
 .fg label{font-size:11px;color:#222;font-weight:900}
 .fg input,.fg select{border:1px solid #aaa;padding:4px 8px;font-size:12px;height:30px;background:#fff;width:100%}
-
-/* TABLE */
-.sec-title{background:#8dc63f;color:#fff;font-size:11px;font-weight:bold;padding:3px 6px}
-.tgrid{display:grid;grid-template-columns:74px 58px 140px 78px 76px 68px 1fr}
-.thead{background:#cde8a8;border-bottom:1px solid #b5d890;padding:3px 4px;font-size:11px;font-weight:bold;color:#222}
-.thead span{padding:0 2px}
-.thead a{color:#0645ad;text-decoration:underline}
-.trow{background:#cce890;border-bottom:1px solid #b8e080;padding:3px 4px;align-items:center;min-height:30px}
-.trow>div{padding:0 2px}
-.overdue-btn{background:#cc0000;color:#fff;font-size:10px;font-weight:bold;border:none;padding:2px 5px;border-radius:2px;cursor:pointer}
-.qlink{color:#0645ad;text-decoration:underline;font-size:11px}
-.pname{font-size:11px;color:#222;line-height:1.3}
-.psub{font-size:10px;color:#666;line-height:1.2}
-.ordnum{font-size:11px;color:#222;line-height:1.3}
-.ordveh{font-size:10px;color:#666;line-height:1.2}
-.opts{display:flex;gap:2px;align-items:center}
-.ob{width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:10px;padding:0}
-.ob1{background:#e8c030}
-.ob2{background:#f0e870}
-.ob3{background:#88b4cc}
-.empty-row{background:#cce890;height:12px;border-bottom:1px solid #b8e080}
 .marklink{text-align:center;padding:5px 4px;font-size:11px}
 .legend{display:flex;gap:16px;justify-content:center;padding:4px 0;flex-wrap:wrap}
 .legitem{display:flex;align-items:center;gap:5px;font-size:10px;color:#444}
 .legdot{width:14px;height:12px;border:1px solid #999}
 .l-b{background:#9ab8d8}.l-g{background:#b0d870}.l-o{background:#f0a060}.l-y{background:#e8d860}
-.footer{background:#d4d4c4;border:1px solid #bbb;border-top:none;padding:3px 8px;font-size:11px;color:#444}
+.footer{background:transparent;padding:6px 0;font-size:11px;color:#444;margin-top:6px}
 </style>
 </head>
 <body>
@@ -83,16 +46,52 @@ a:hover{text-decoration:underline}
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="logo">
-      <svg width="200" height="40" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
-        <!-- Checkbox icon -->
-        <rect x="0" y="4" width="28" height="28" rx="3" fill="#222"/>
-        <polyline points="5,18 12,25 23,10" fill="none" stroke="#4caf50" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- PARTS in gray -->
-        <text x="34" y="26" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="900" fill="#555">PARTS</text>
-        <!-- CHECK in green -->
-        <text x="103" y="26" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="900" fill="#4caf50">CHECK</text>
-        <!-- Tagline -->
-        <text x="34" y="37" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#888">Smart. Simple. Streamlined.</text>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="48" viewBox="0 0 482.2 92.8">
+        <defs><style>.st0{fill:#85c776}.st1{fill:#57a84c}.st2{fill:#0db14b}.st3{fill:#595a5c}</style></defs>
+        <polygon class="st1" points="61.1 63.6 51.6 58.3 51.6 58.3 5.3 54.1 0 63.6 61.1 63.6 61.1 63.6"/>
+        <polygon class="st0" points="5.3 54.1 9.5 7.8 0 2.5 0 2.5 0 63.6 0 63.6 5.3 54.1 5.3 54.1"/>
+        <path class="st2" d="M11.8,26.1c1.3-1.3,2.6-2.5,4.1-3.9,4.7,3.3,9.4,6.6,14.3,10.1.5-.7,1.1-1.3,1.6-2,8.3-10.6,17.7-20.2,28.5-28.4C62.9,0,65.5-.2,68.9.2c-16,15.5-27.4,33.9-38.6,52.5-6.2-8.8-12.3-17.6-18.6-26.6Z"/>
+        <path class="st1" d="M9.5,7.8l34.5,3.1c3.1-3,6.2-5.8,9.4-8.5H0l9.5,5.3h0Z"/>
+        <path class="st0" d="M54.9,21.9l-3.3,36.4,9.5,5.3V14c-2.1,2.5-4.2,5.2-6.2,7.8Z"/>
+        <g>
+          <path class="st3" d="M99.3,47.8h-8.3v14.7h-10.9V14h19.8c11.8,0,16.2,4.7,16.2,13.8v6.3c0,9.1-5,13.7-16.8,13.7ZM105.2,28.8c0-3.5-1.2-5.1-5.8-5.1h-8.3v14.6h8.3c4.8,0,5.8-1.8,5.8-5.3v-4.2Z"/>
+          <path class="st3" d="M160,62.6h-11.4l-2.6-9.5h-16.3l-2.6,9.5h-11.4l14.8-48.5h14.6l14.9,48.5ZM132.3,44h11.1l-5.5-20.3-5.6,20.3Z"/>
+          <path class="st3" d="M182.4,47.5h-6.4v15.1h-10.9V14h20.2c11.8,0,16.2,4.7,16.2,13.8v6c0,6-2.2,10.1-7.1,12.2l11.7,16.6h-13l-10.7-15.1ZM190.5,28.8c0-3.6-1.4-5.1-5.8-5.1h-8.7v14.3h8.7c4.7,0,5.8-1.7,5.8-5.3v-3.9Z"/>
+          <path class="st3" d="M230.9,23.7v38.8h-10.9V23.7h-13v-9.7h37v9.7h-13Z"/>
+          <path class="st3" d="M263.6,63.3c-5.6,0-11.5-1.2-15.7-3.1l1.8-8.5c4.4,1.4,9,2.3,14,2.3s6.7-1.1,6.7-5.2-.2-4.9-8.2-6.6c-11.7-2.6-13.5-4.9-13.5-15.4s3.4-13.6,16.8-13.6,9.3.4,14.7,1.6l-1.1,9.2c-5.5-.9-9.1-1.4-13.5-1.4s-6,.9-6,4.4.2,4.7,7.9,6.6c13.1,3.1,13.8,5.7,13.8,15.2s-3.1,14.4-17.8,14.4Z"/>
+          <path class="st2" d="M297.8,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/>
+          <path class="st2" d="M351.1,62.6v-19.5h-15.7v19.5h-10.9V14h10.9v19.3h15.7V14h10.9v48.5h-10.9Z"/>
+          <path class="st2" d="M369.6,62.6V14h30.5v9.7h-19.6v8.9h18.1v9.7h-18.1v10.6h19.6v9.7h-30.5Z"/>
+          <path class="st2" d="M416.7,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/>
+          <path class="st2" d="M443.4,14h10.9v48.5h-10.9V14ZM455.7,37.8l13.1-23.8h12.3l-13.6,23.8,14.6,24.8h-12.3l-14.1-24.8Z"/>
+        </g>
+        <g>
+          <path class="st3" d="M84,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M108.5,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M122.3,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM120.8,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+          <path class="st3" d="M131.4,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+          <path class="st3" d="M140.1,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+          <path class="st3" d="M142.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+          <path class="st3" d="M158.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M167.3,72.4v-2.8h1.5v2.8h-1.5ZM167.3,87.4v-12.7h1.5v12.7h-1.5Z"/>
+          <path class="st3" d="M188.3,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M202.9,83.8c0,2.3-1,3.9-3.9,3.9s-2.4-.1-3.9-.4v5.3l-1.5.2v-18h1.4v1.2c1.4-1,2.9-1.5,4.4-1.5,2.5,0,3.6,1.2,3.6,3.5v5.8ZM195,85.9c1.4.3,2.7.4,4,.4s2.3-.8,2.3-2.6v-5.8c0-1.5-.5-2.2-2.2-2.2s-2.9.7-4.1,1.6v8.4Z"/>
+          <path class="st3" d="M206.3,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+          <path class="st3" d="M215.9,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM212.6,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M223.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+          <path class="st3" d="M239.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M254.9,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+          <path class="st3" d="M263,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+          <path class="st3" d="M269.3,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM265.9,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M285.5,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM284,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+          <path class="st3" d="M304.7,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M310,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+          <path class="st3" d="M315.4,72.4v-2.8h1.5v2.8h-1.5ZM315.4,87.4v-12.7h1.5v12.7h-1.5Z"/>
+          <path class="st3" d="M328.6,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M338,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM334.7,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M345.4,78.4c0-2.3,1-3.9,3.9-3.9s2.4.1,3.9.4v-5.3l1.5-.2v18.1h-1.4v-1.2c-1.4,1-2.9,1.5-4.3,1.5-2.5,0-3.6-1.2-3.6-3.5v-5.8ZM353.2,76.3c-1.4-.3-2.7-.4-4-.4s-2.3.8-2.3,2.6v5.8c0,1.5.5,2.2,2.2,2.2s2.9-.7,4.1-1.6v-8.4Z"/>
+          <path class="st3" d="M358.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+        </g>
       </svg>
     </div>
     <div class="topnav">
@@ -110,41 +109,42 @@ a:hover{text-decoration:underline}
 
   <!-- FOUR PANELS -->
   <div class="panels">
-
     <div class="panel">
-      <div class="panel-hdr ph-blue"><span class="picon">📋</span><span class="ptitle">Quotes</span></div>
+      <div class="panel-hdr"><span class="picon">📋</span><span class="ptitle">Quotes</span></div>
       <div class="panel-row"><a href="#">New Quote Request</a><span class="bdg">4</span></div>
       <div class="panel-row"><a href="#">Quotes In Progress</a><span class="bdg bdg-o">7</span></div>
     </div>
-
     <div class="panel">
-      <div class="panel-hdr ph-orange"><span class="picon">📦</span><span class="ptitle">My Orders</span></div>
+      <div class="panel-hdr"><span class="picon">📦</span><span class="ptitle">My Orders</span></div>
       <div class="panel-row"><a href="#">All Orders</a><span class="bdg">54</span></div>
       <div class="panel-row"><a href="#">ETA Requests</a></div>
       <div class="panel-row"><a href="#">ETA Overdue</a><span class="bdg">20</span></div>
     </div>
-
     <div class="panel">
-      <div class="panel-hdr ph-green"><span class="picon">💳</span><span class="ptitle">Credit Management</span></div>
+      <div class="panel-hdr">
+        <span class="picon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            <text x="9" y="16" font-size="7" fill="#fff" stroke="none" font-weight="bold">$</text>
+          </svg>
+        </span>
+        <span class="ptitle">Credit Management</span>
+      </div>
       <div class="panel-row"><a href="#">All Credit Requests</a><span class="bdg">10</span></div>
       <div class="panel-row"><a href="#">Credits Not Opened</a><span class="bdg">15</span></div>
       <div class="panel-row"><a href="#">Credits Opened</a><span class="bdg bdg-o">7</span></div>
     </div>
-
     <div class="panel">
-      <div class="panel-hdr ph-teal"><span class="picon">🔧</span><span class="ptitle">Reports &amp; Tools</span></div>
+      <div class="panel-hdr"><span class="picon">🔧</span><span class="ptitle">Reports &amp; Tools</span></div>
       <div class="panel-row"><a href="#">Contact Us</a></div>
       <div class="panel-row"><a href="#">New Messages</a><span class="bdg">12</span></div>
       <div class="panel-row"><a href="#">New Feedback</a><span class="bdg">37</span></div>
       <div class="panel-row"><a href="#">Fill Rate Reporting</a></div>
     </div>
-
   </div>
 
   <!-- MAIN CONTENT -->
   <div class="content">
-
-    <!-- FILTERS -->
     <div class="filterbox">
       <div style="display:flex;gap:8px;width:100%">
         <div class="fg" style="flex:1"><label>Purchaser</label><input value="Flexiquote System"></div>
@@ -158,65 +158,137 @@ a:hover{text-decoration:underline}
       </div>
     </div>
 
-    <!-- ORDERS NOT OPENED -->
-    <div class="sec-title">Orders NOT Opened</div>
-    <div class="tgrid thead">
-      <span><a href="#">Due</a> ↕</span>
-      <span><a href="#">Quote</a></span>
-      <span><a href="#">Purchaser</a> ↕</span>
-      <span>Order</span><span>ETA</span><span>Status</span><span>Options</span>
-    </div>
-    <div class="empty-row"></div>
-
-    <!-- ORDERS OPENED -->
-    <div class="sec-title" style="margin-top:6px">Orders Opened</div>
-    <div class="tgrid thead">
-      <span><a href="#">Due</a> ↕</span>
-      <span><a href="#">Quote</a></span>
-      <span><a href="#">Purchaser</a> ↕</span>
-      <span>Order</span><span>ETA</span><span>Status</span><span>Options</span>
-    </div>
-
-    <div class="tgrid trow">
-      <div><button class="overdue-btn">Overdue</button></div>
-      <div><a class="qlink" href="#">4771188</a></div>
-      <div><div class="pname">FlexiQuote Systems</div><div class="psub">2 Items</div></div>
-      <div><div class="ordnum">78925-1</div><div class="ordveh">Toyota</div></div>
-      <div style="font-size:11px">16/01/2026</div><div></div>
-      <div class="opts"><button class="ob ob1">📋</button><button class="ob ob2">📄</button><button class="ob ob3">🖨</button></div>
-    </div>
-
-    <div class="tgrid trow">
-      <div><button class="overdue-btn">Overdue</button></div>
-      <div><a class="qlink" href="#">6246</a></div>
-      <div><div class="pname">FlexiQuote Systems</div><div class="psub">2 Items</div></div>
-      <div><div class="ordnum">24033</div><div class="ordveh">Toyota</div></div>
-      <div style="font-size:11px">16/01/2026</div><div></div>
-      <div class="opts"><button class="ob ob1">📋</button><button class="ob ob2">📄</button><button class="ob ob3">🖨</button></div>
-    </div>
-
-    <div class="tgrid trow">
-      <div><button class="overdue-btn">Overdue</button></div>
-      <div><a class="qlink" href="#">Sample</a></div>
-      <div><div class="pname">FlexiQuote Systems</div><div class="psub">5 Items</div></div>
-      <div><div class="ordnum">ZS1884-1</div><div class="ordveh">Toyota</div></div>
-      <div style="font-size:11px">19/01/2026</div><div></div>
-      <div class="opts"><button class="ob ob1">📋</button><button class="ob ob2">📄</button><button class="ob ob3">🖨</button></div>
-    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead>
+        <tr style="border-bottom:1px solid #ccc">
+          <th style="text-align:left;padding:8px 10px;font-weight:normal;width:35%"></th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">Overdue</th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">Due Today</th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">Due This Week</th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">Due Later</th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">Value</th>
+          <th style="text-align:center;padding:8px 6px;font-weight:bold;color:#333">View</th>
+        </tr>
+      </thead>
+      <tbody id="accordion-body"></tbody>
+    </table>
 
     <div class="marklink"><a href="#">Click here to Mark Multiple Orders as Sent</a></div>
-
     <div class="legend">
       <div class="legitem"><div class="legdot l-b"></div> ETA Requested</div>
       <div class="legitem"><div class="legdot l-g"></div> ETA Assigned</div>
       <div class="legitem"><div class="legdot l-o"></div> ETA Overdue</div>
       <div class="legitem"><div class="legdot l-y"></div> ETA Authority Pending</div>
     </div>
-
   </div>
 
-  <div class="footer">Logged in as s2 (OEM Dealer) <strong>8:21am</strong></div>
-
 </div>
+<div class="footer">Logged in as s2 (OEM Dealer) <strong>8:21am</strong></div>
+
+<script>
+var subRows = {
+  'New Orders': [
+    {due:'Overdue',      quote:'4771188', purchaser:'FlexiQuote Systems', items:'2 Items', order:'78925-1', vehicle:'Toyota',   eta:'16/01/2026'},
+    {due:'Overdue',      quote:'6246',    purchaser:'FlexiQuote Systems', items:'2 Items', order:'24033',   vehicle:'Toyota',   eta:'16/01/2026'},
+  ],
+  'Opened': [
+    {due:'Overdue',      quote:'5012', purchaser:'AutoParts Co',   items:'3 Items', order:'AP-3301', vehicle:'Honda', eta:'14/01/2026'},
+    {due:'Overdue',      quote:'5098', purchaser:'SpeedParts Ltd', items:'1 Item',  order:'SP-4410', vehicle:'Mazda', eta:'15/01/2026'},
+  ],
+  'Internal Status Assigned': [
+    {due:'Overdue',      quote:'6310', purchaser:'FlexiQuote Systems', items:'4 Items', order:'FQ-2201', vehicle:'Ford',    eta:'12/01/2026'},
+    {due:'Due Today',    quote:'6322', purchaser:'Metro Motors',       items:'2 Items', order:'MM-1100', vehicle:'Nissan',  eta:'26/03/2026'},
+    {due:'Due Today',    quote:'6335', purchaser:'City Auto',          items:'1 Item',  order:'CA-0091', vehicle:'Hyundai', eta:'26/03/2026'},
+  ],
+  'Supply Date Modified': [
+    {due:'Due This Week',quote:'7201', purchaser:'AutoParts Co', items:'5 Items', order:'AP-5502', vehicle:'Kia',    eta:'28/03/2026'},
+    {due:'Due Later',    quote:'7245', purchaser:'Metro Motors', items:'2 Items', order:'MM-2200', vehicle:'Subaru', eta:'10/04/2026'},
+  ],
+  'Back Order': [
+    {due:'Overdue',      quote:'8801', purchaser:'SpeedParts Ltd',     items:'3 Items', order:'SP-7701', vehicle:'Toyota',   eta:'01/01/2026'},
+    {due:'Overdue',      quote:'8834', purchaser:'City Auto',          items:'2 Items', order:'CA-8802', vehicle:'BMW',      eta:'05/01/2026'},
+    {due:'Due Later',    quote:'8860', purchaser:'FlexiQuote Systems', items:'1 Item',  order:'FQ-9901', vehicle:'Mercedes', eta:'15/04/2026'},
+  ],
+};
+
+var values = {'New Orders':'$940.00','Opened':'$0.00','Internal Status Assigned':'$0.00','Supply Date Modified':'$0.00','Back Order':'$0.00'};
+
+function countByDue(s, type){ return s.filter(function(r){return r.due===type;}).length; }
+
+function buildRows(){
+  return Object.keys(subRows).map(function(lbl,i){
+    var s = subRows[lbl];
+    return {label:lbl, overdue:countByDue(s,'Overdue'), today:countByDue(s,'Due Today'), week:countByDue(s,'Due This Week'), later:countByDue(s,'Due Later'), value:values[lbl], bg:i%2===0?'#f0f0f0':'#fff'};
+  });
+}
+
+function badge(val, type){
+  var bg = '#e8e8e8', color = '#555';
+  if(val>0){
+    if(type==='overdue')  { bg='linear-gradient(to bottom,#ff6644,#aa1100)'; color='#fff'; }
+    if(type==='today')    { bg='linear-gradient(to bottom,#ffcc44,#cc7700)'; color='#fff'; }
+    if(type==='week')     { bg='linear-gradient(to bottom,#88dd55,#2e8800)'; color='#fff'; }
+    if(type==='later')    { bg='linear-gradient(to bottom,#66cc88,#1a7744)'; color='#fff'; }
+  }
+  return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:'+bg+';color:'+color+';font-weight:bold;font-size:12px">'+val+'</span>';
+}
+
+var openRow = null;
+var tbody = document.getElementById('accordion-body');
+
+function render(){
+  tbody.innerHTML='';
+  buildRows().forEach(function(r){
+    var tr=document.createElement('tr');
+    tr.style.background=r.bg;
+    tr.style.cursor='pointer';
+    tr.innerHTML=
+      '<td style="padding:10px;font-weight:bold;font-size:12px">'+r.label+'</td>'+
+      '<td style="text-align:center;padding:8px">'+badge(r.overdue,'overdue')+'</td>'+
+      '<td style="text-align:center;padding:8px">'+badge(r.today,'today')+'</td>'+
+      '<td style="text-align:center;padding:8px">'+badge(r.week,'week')+'</td>'+
+      '<td style="text-align:center;padding:8px">'+badge(r.later,'later')+'</td>'+
+      '<td style="text-align:center;padding:8px;font-size:12px">'+r.value+'</td>'+
+      '<td style="text-align:center;padding:8px"><span class="material-symbols-outlined" style="font-size:20px;color:#555;font-variation-settings:\'wght\' 700">'+(openRow===r.label?'expand_less':'expand_more')+'</span></td>';
+    tr.onclick=(function(lbl){return function(){openRow=openRow===lbl?null:lbl;render();};})(r.label);
+    tbody.appendChild(tr);
+
+    if(openRow===r.label){
+      var s=subRows[r.label];
+      var ex=document.createElement('tr');
+      if(s.length>0){
+        ex.innerHTML='<td colspan="7" style="padding:0"><table style="width:100%;border-collapse:collapse;font-size:11px">'+
+          '<thead><tr style="background:#cde8a8;border-bottom:1px solid #b5d890">'+
+          '<th style="padding:3px 8px;text-align:left">Due</th>'+
+          '<th style="padding:3px 8px;text-align:left">Quote</th>'+
+          '<th style="padding:3px 8px;text-align:left">Purchaser</th>'+
+          '<th style="padding:3px 8px;text-align:left">Order</th>'+
+          '<th style="padding:3px 8px;text-align:left">ETA</th>'+
+          '<th style="padding:3px 8px;text-align:left">Status</th>'+
+          '<th style="padding:3px 8px;text-align:left">Options</th></tr></thead><tbody>'+
+          s.map(function(d){
+            return '<tr style="background:#cce890;border-bottom:1px solid #b8e080">'+
+              '<td style="padding:4px 8px"><span style="background:#cc0000;color:#fff;font-size:10px;font-weight:bold;padding:2px 5px;border-radius:2px">'+d.due+'</span></td>'+
+              '<td style="padding:4px 8px"><a style="color:#0645ad;text-decoration:underline" href="#">'+d.quote+'</a></td>'+
+              '<td style="padding:4px 8px"><div>'+d.purchaser+'</div><div style="font-size:10px;color:#666">'+d.items+'</div></td>'+
+              '<td style="padding:4px 8px"><div>'+d.order+'</div><div style="font-size:10px;color:#666">'+d.vehicle+'</div></td>'+
+              '<td style="padding:4px 8px">'+d.eta+'</td>'+
+              '<td style="padding:4px 8px"></td>'+
+              '<td style="padding:4px 8px">'+
+                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#e8c030;margin:0 1px">📋</button>'+
+                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#f0e870;margin:0 1px">📄</button>'+
+                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#88b4cc;margin:0 1px">🖨</button>'+
+              '</td></tr>';
+          }).join('')+
+        '</tbody></table></td>';
+      } else {
+        ex.innerHTML='<td colspan="7" style="padding:8px 16px;font-size:11px;color:#888;background:#f9f9f9">No records found.</td>';
+      }
+      tbody.appendChild(ex);
+    }
+  });
+}
+render();
+</script>
 </body>
 </html>
