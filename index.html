@@ -147,9 +147,9 @@ a:hover{text-decoration:underline}
   <div class="content">
     <div class="filterbox">
       <div style="display:flex;gap:8px;width:100%">
-        <div class="fg" style="flex:1"><label>Purchaser</label><input placeholder="Purchaser"></div>
-        <div class="fg" style="flex:1"><label>Vehicle</label><input placeholder="Search Vehicle"></div>
-        <div class="fg" style="flex:1"><label>Purchase Order</label><input placeholder="Search Order #"></div>
+        <div class="fg" style="flex:1"><label>Purchaser</label><div style="position:relative"><input id="purchaser-filter" placeholder="Purchaser" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="purchaser-clear" onclick="clearFilter('purchaser-filter','purchaser')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
+        <div class="fg" style="flex:1"><label>Vehicle</label><div style="position:relative"><input id="vehicle-filter" placeholder="Search Vehicle" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="vehicle-clear" onclick="clearFilter('vehicle-filter','vehicle')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
+        <div class="fg" style="flex:1"><label>Purchase Order</label><div style="position:relative"><input id="order-filter" placeholder="Search Order #" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="order-clear" onclick="clearFilter('order-filter','order')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
       </div>
       <div style="display:flex;gap:8px;width:100%">
         <div class="fg" style="flex:1"><label>Status</label><select><option>All</option></select></div>
@@ -188,36 +188,146 @@ a:hover{text-decoration:underline}
 <script>
 var subRows = {
   'New Orders': [
-    {due:'Overdue',      quote:'4771188', purchaser:'FlexiQuote Systems', items:'2 Items', order:'78925-1', vehicle:'Toyota',   eta:'16/01/2026'},
-    {due:'Overdue',      quote:'6246',    purchaser:'FlexiQuote Systems', items:'2 Items', order:'24033',   vehicle:'Toyota',   eta:'16/01/2026'},
+    {date:'08/12/2025', quote:'CTEP503923', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'4 Items', order:'36642',    vehicle:'Toyota',   eta:'26/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'31/12/2025', quote:'CTEP519373', company:'Repairhub Underwood', purchaser:'Bailey Schuh',     items:'3 Items', order:'36973',    vehicle:'Toyota',   eta:'26/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'02/01/2026', quote:'CTEP520145', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'2 Items', order:'134210',   vehicle:'Honda',    eta:'27/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'05/01/2026', quote:'CTEP521788', company:'GM Autobody Repairs', purchaser:'Sarah Nguyen',     items:'5 Items', order:'GM-4401',  vehicle:'Ford',     eta:'28/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'09/01/2026', quote:'CTEP523302', company:'City Auto Group',     purchaser:'James Whitfield',  items:'1 Item',  order:'CA-1102',  vehicle:'Nissan',   eta:'29/01/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'11/01/2026', quote:'CTEP524891', company:'SpeedParts Ltd',      purchaser:'Tom Harris',       items:'3 Items', order:'SP-3310',  vehicle:'Mazda',    eta:'30/01/2026', status:'Shipped',            due:'Due Today'},
+    {date:'12/01/2026', quote:'CTEP540112', company:'Metro Motors',        purchaser:'Emma Davis',       items:'2 Items', order:'MM-1201',  vehicle:'Kia',      eta:'31/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'13/01/2026', quote:'CTEP540334', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'4 Items', order:'AP-3412',  vehicle:'Subaru',   eta:'01/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'14/01/2026', quote:'CTEP540556', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'1 Item',  order:'37101',    vehicle:'BMW',      eta:'02/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'15/01/2026', quote:'CTEP540778', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'3 Items', order:'134301',   vehicle:'Mercedes', eta:'03/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'16/01/2026', quote:'CTEP541000', company:'GM Autobody Repairs', purchaser:'Bailey Schuh',     items:'2 Items', order:'GM-4502',  vehicle:'Hyundai',  eta:'04/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'17/01/2026', quote:'CTEP541222', company:'City Auto Group',     purchaser:'Sarah Nguyen',     items:'5 Items', order:'CA-2203',  vehicle:'Toyota',   eta:'05/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'18/01/2026', quote:'CTEP541444', company:'SpeedParts Ltd',      purchaser:'James Whitfield',  items:'1 Item',  order:'SP-4411',  vehicle:'Honda',    eta:'06/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'19/01/2026', quote:'CTEP541666', company:'Metro Motors',        purchaser:'Tom Harris',       items:'4 Items', order:'MM-2302',  vehicle:'Ford',     eta:'07/02/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'20/01/2026', quote:'CTEP541888', company:'AutoParts Co',        purchaser:'Emma Davis',       items:'2 Items', order:'AP-4513',  vehicle:'Nissan',   eta:'08/02/2026', status:'Hold till due date', due:'Due This Week'},
+    {date:'21/01/2026', quote:'CTEP542110', company:'Repairhub Underwood', purchaser:'Liam Chen',        items:'3 Items', order:'37202',    vehicle:'Mazda',    eta:'09/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'22/01/2026', quote:'CTEP542332', company:'The Bump Shop',       purchaser:'Darren Patterson', items:'6 Items', order:'134402',   vehicle:'Kia',      eta:'10/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'23/01/2026', quote:'CTEP542554', company:'GM Autobody Repairs', purchaser:'Mark Johnston',    items:'1 Item',  order:'GM-4603',  vehicle:'Subaru',   eta:'11/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'24/01/2026', quote:'CTEP542776', company:'City Auto Group',     purchaser:'Bailey Schuh',     items:'2 Items', order:'CA-3304',  vehicle:'BMW',      eta:'12/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'25/01/2026', quote:'CTEP542998', company:'SpeedParts Ltd',      purchaser:'Sarah Nguyen',     items:'4 Items', order:'SP-5512',  vehicle:'Toyota',   eta:'13/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'26/01/2026', quote:'CTEP543220', company:'Metro Motors',        purchaser:'James Whitfield',  items:'3 Items', order:'MM-3403',  vehicle:'Honda',    eta:'14/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'27/01/2026', quote:'CTEP543442', company:'AutoParts Co',        purchaser:'Tom Harris',       items:'2 Items', order:'AP-5614',  vehicle:'Ford',     eta:'15/02/2026', status:'Shipped',            due:'Due Later'},
   ],
   'Opened': [
-    {due:'Overdue',      quote:'5012', purchaser:'AutoParts Co',   items:'3 Items', order:'AP-3301', vehicle:'Honda', eta:'14/01/2026'},
-    {due:'Overdue',      quote:'5098', purchaser:'SpeedParts Ltd', items:'1 Item',  order:'SP-4410', vehicle:'Mazda', eta:'15/01/2026'},
+    {date:'07/01/2026', quote:'CTEP511109', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'3 Items', order:'134187',   vehicle:'Toyota',   eta:'26/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'24/01/2026', quote:'CTEP534427', company:'GM Autobody Repairs', purchaser:'Bailey Schuh',     items:'1 Item',  order:'8878.1',   vehicle:'Toyota',   eta:'26/01/2026', status:'Shipped',            due:'Due Today'},
+    {date:'13/01/2026', quote:'CTEP526003', company:'Metro Motors',        purchaser:'Emma Davis',       items:'4 Items', order:'MM-6601',  vehicle:'Kia',      eta:'31/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'16/01/2026', quote:'CTEP527441', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'2 Items', order:'AP-2250',  vehicle:'Subaru',   eta:'01/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'19/01/2026', quote:'CTEP530019', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'6 Items', order:'36995',    vehicle:'BMW',      eta:'02/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'21/01/2026', quote:'CTEP531774', company:'City Auto Group',     purchaser:'James Whitfield',  items:'2 Items', order:'CA-3305',  vehicle:'Hyundai',  eta:'03/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'22/01/2026', quote:'CTEP532890', company:'SpeedParts Ltd',      purchaser:'Tom Harris',       items:'1 Item',  order:'SP-5512',  vehicle:'Mercedes', eta:'04/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'26/01/2026', quote:'CTEP550100', company:'Repairhub Underwood', purchaser:'Bailey Schuh',     items:'3 Items', order:'37303',    vehicle:'Ford',     eta:'05/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'27/01/2026', quote:'CTEP550322', company:'The Bump Shop',       purchaser:'Sarah Nguyen',     items:'2 Items', order:'134503',   vehicle:'Nissan',   eta:'06/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'28/01/2026', quote:'CTEP550544', company:'GM Autobody Repairs', purchaser:'Liam Chen',        items:'5 Items', order:'GM-5704',  vehicle:'Mazda',    eta:'07/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'29/01/2026', quote:'CTEP550766', company:'Metro Motors',        purchaser:'Mark Johnston',    items:'1 Item',  order:'MM-7802',  vehicle:'Toyota',   eta:'08/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'30/01/2026', quote:'CTEP550988', company:'AutoParts Co',        purchaser:'Emma Davis',       items:'4 Items', order:'AP-6715',  vehicle:'Honda',    eta:'09/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'31/01/2026', quote:'CTEP551210', company:'City Auto Group',     purchaser:'Darren Patterson', items:'2 Items', order:'CA-4406',  vehicle:'Kia',      eta:'10/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'01/02/2026', quote:'CTEP551432', company:'SpeedParts Ltd',      purchaser:'James Whitfield',  items:'3 Items', order:'SP-6613',  vehicle:'Subaru',   eta:'11/02/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'02/02/2026', quote:'CTEP551654', company:'Repairhub Underwood', purchaser:'Tom Harris',       items:'1 Item',  order:'37404',    vehicle:'BMW',      eta:'12/02/2026', status:'Hold till due date', due:'Due This Week'},
+    {date:'03/02/2026', quote:'CTEP551876', company:'The Bump Shop',       purchaser:'Bailey Schuh',     items:'2 Items', order:'134604',   vehicle:'Mercedes', eta:'13/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'04/02/2026', quote:'CTEP552098', company:'GM Autobody Repairs', purchaser:'Sarah Nguyen',     items:'4 Items', order:'GM-5805',  vehicle:'Hyundai',  eta:'14/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'05/02/2026', quote:'CTEP552320', company:'Metro Motors',        purchaser:'Liam Chen',        items:'3 Items', order:'MM-8903',  vehicle:'Ford',     eta:'15/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'06/02/2026', quote:'CTEP552542', company:'AutoParts Co',        purchaser:'Mark Johnston',    items:'2 Items', order:'AP-7816',  vehicle:'Nissan',   eta:'16/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'07/02/2026', quote:'CTEP552764', company:'City Auto Group',     purchaser:'Emma Davis',       items:'1 Item',  order:'CA-5507',  vehicle:'Mazda',    eta:'17/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'08/02/2026', quote:'CTEP552986', company:'SpeedParts Ltd',      purchaser:'Darren Patterson', items:'5 Items', order:'SP-7714',  vehicle:'Toyota',   eta:'18/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'09/02/2026', quote:'CTEP553208', company:'Repairhub Underwood', purchaser:'James Whitfield',  items:'2 Items', order:'37505',    vehicle:'Honda',    eta:'19/02/2026', status:'Shipped',            due:'Due Later'},
   ],
   'Internal Status Assigned': [
-    {due:'Overdue',      quote:'6310', purchaser:'FlexiQuote Systems', items:'4 Items', order:'FQ-2201', vehicle:'Ford',    eta:'12/01/2026'},
-    {due:'Due Today',    quote:'6322', purchaser:'Metro Motors',       items:'2 Items', order:'MM-1100', vehicle:'Nissan',  eta:'26/03/2026'},
-    {due:'Due Today',    quote:'6335', purchaser:'City Auto',          items:'1 Item',  order:'CA-0091', vehicle:'Hyundai', eta:'26/03/2026'},
+    {date:'24/01/2026', quote:'CTEP536180', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'4 Items', order:'133886-3', vehicle:'Toyota',   eta:'26/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'23/12/2025', quote:'CTEP517930', company:'Repairhub Underwood', purchaser:'Bailey Schuh',     items:'1 Item',  order:'36932',    vehicle:'Toyota',   eta:'27/01/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'15/01/2026', quote:'CTEP528841', company:'City Auto Group',     purchaser:'James Whitfield',  items:'2 Items', order:'91045',    vehicle:'Mazda',    eta:'28/01/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'17/01/2026', quote:'CTEP529560', company:'Metro Motors',        purchaser:'Sarah Nguyen',     items:'3 Items', order:'MM-7702',  vehicle:'Ford',     eta:'29/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'20/01/2026', quote:'CTEP531100', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'5 Items', order:'AP-8803',  vehicle:'Nissan',   eta:'30/01/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'22/01/2026', quote:'CTEP532645', company:'GM Autobody Repairs', purchaser:'Emma Davis',       items:'2 Items', order:'GM-5502',  vehicle:'Honda',    eta:'31/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'25/01/2026', quote:'CTEP537210', company:'SpeedParts Ltd',      purchaser:'Tom Harris',       items:'1 Item',  order:'SP-6613',  vehicle:'Kia',      eta:'01/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'10/02/2026', quote:'CTEP560100', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'3 Items', order:'37606',    vehicle:'Subaru',   eta:'02/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'11/02/2026', quote:'CTEP560322', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'2 Items', order:'134705',   vehicle:'BMW',      eta:'03/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'12/02/2026', quote:'CTEP560544', company:'GM Autobody Repairs', purchaser:'Bailey Schuh',     items:'4 Items', order:'GM-6906',  vehicle:'Mercedes', eta:'04/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'13/02/2026', quote:'CTEP560766', company:'City Auto Group',     purchaser:'Sarah Nguyen',     items:'1 Item',  order:'CA-6608',  vehicle:'Hyundai',  eta:'05/02/2026', status:'Hold till due date', due:'Due Today'},
+    {date:'14/02/2026', quote:'CTEP560988', company:'SpeedParts Ltd',      purchaser:'James Whitfield',  items:'3 Items', order:'SP-8815',  vehicle:'Toyota',   eta:'06/02/2026', status:'Shipped',            due:'Overdue'},
+    {date:'15/02/2026', quote:'CTEP561210', company:'Metro Motors',        purchaser:'Tom Harris',       items:'2 Items', order:'MM-9004',  vehicle:'Honda',    eta:'07/02/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'16/02/2026', quote:'CTEP561432', company:'AutoParts Co',        purchaser:'Emma Davis',       items:'5 Items', order:'AP-9017',  vehicle:'Ford',     eta:'08/02/2026', status:'Shipped',            due:'Due Today'},
+    {date:'17/02/2026', quote:'CTEP561654', company:'Repairhub Underwood', purchaser:'Liam Chen',        items:'1 Item',  order:'37707',    vehicle:'Nissan',   eta:'09/02/2026', status:'Hold till due date', due:'Due This Week'},
+    {date:'18/02/2026', quote:'CTEP561876', company:'The Bump Shop',       purchaser:'Darren Patterson', items:'4 Items', order:'134806',   vehicle:'Mazda',    eta:'10/02/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'19/02/2026', quote:'CTEP562098', company:'GM Autobody Repairs', purchaser:'Mark Johnston',    items:'2 Items', order:'GM-7007',  vehicle:'Kia',      eta:'11/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'20/02/2026', quote:'CTEP562320', company:'City Auto Group',     purchaser:'Bailey Schuh',     items:'3 Items', order:'CA-7709',  vehicle:'Subaru',   eta:'12/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'21/02/2026', quote:'CTEP562542', company:'SpeedParts Ltd',      purchaser:'Sarah Nguyen',     items:'1 Item',  order:'SP-9916',  vehicle:'BMW',      eta:'13/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'22/02/2026', quote:'CTEP562764', company:'Metro Motors',        purchaser:'James Whitfield',  items:'2 Items', order:'MM-0105',  vehicle:'Mercedes', eta:'14/02/2026', status:'Shipped',            due:'Due Later'},
+    {date:'23/02/2026', quote:'CTEP562986', company:'AutoParts Co',        purchaser:'Tom Harris',       items:'4 Items', order:'AP-0218',  vehicle:'Toyota',   eta:'15/02/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'24/02/2026', quote:'CTEP563208', company:'Repairhub Underwood', purchaser:'Emma Davis',       items:'3 Items', order:'37808',    vehicle:'Honda',    eta:'16/02/2026', status:'Shipped',            due:'Due Later'},
   ],
   'Supply Date Modified': [
-    {due:'Due This Week',quote:'7201', purchaser:'AutoParts Co', items:'5 Items', order:'AP-5502', vehicle:'Kia',    eta:'28/03/2026'},
-    {due:'Due Later',    quote:'7245', purchaser:'Metro Motors', items:'2 Items', order:'MM-2200', vehicle:'Subaru', eta:'10/04/2026'},
+    {date:'10/01/2026', quote:'CTEP522667', company:'Metro Motors',        purchaser:'Sarah Nguyen',     items:'5 Items', order:'MM-5502',  vehicle:'Kia',      eta:'28/03/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'18/01/2026', quote:'CTEP529014', company:'SpeedParts Ltd',      purchaser:'Tom Harris',       items:'2 Items', order:'SP-2200',  vehicle:'Subaru',   eta:'10/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'20/01/2026', quote:'CTEP530882', company:'City Auto Group',     purchaser:'James Whitfield',  items:'3 Items', order:'CA-4406',  vehicle:'BMW',      eta:'29/03/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'21/01/2026', quote:'CTEP531990', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'1 Item',  order:'AP-9904',  vehicle:'Toyota',   eta:'11/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'23/01/2026', quote:'CTEP533114', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'4 Items', order:'37010',    vehicle:'Honda',    eta:'30/03/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'25/01/2026', quote:'CTEP535678', company:'GM Autobody Repairs', purchaser:'Bailey Schuh',     items:'2 Items', order:'GM-6603',  vehicle:'Nissan',   eta:'12/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'25/02/2026', quote:'CTEP570100', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'3 Items', order:'134907',   vehicle:'Mazda',    eta:'31/03/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'26/02/2026', quote:'CTEP570322', company:'Metro Motors',        purchaser:'Emma Davis',       items:'1 Item',  order:'MM-1206',  vehicle:'Ford',     eta:'13/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'27/02/2026', quote:'CTEP570544', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'4 Items', order:'AP-1319',  vehicle:'Hyundai',  eta:'01/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'28/02/2026', quote:'CTEP570766', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'2 Items', order:'37909',    vehicle:'Mercedes', eta:'14/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'01/03/2026', quote:'CTEP570988', company:'SpeedParts Ltd',      purchaser:'Bailey Schuh',     items:'5 Items', order:'SP-1017',  vehicle:'Toyota',   eta:'02/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'02/03/2026', quote:'CTEP571210', company:'City Auto Group',     purchaser:'Sarah Nguyen',     items:'1 Item',  order:'CA-8810',  vehicle:'Honda',    eta:'15/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'03/03/2026', quote:'CTEP571432', company:'GM Autobody Repairs', purchaser:'James Whitfield',  items:'3 Items', order:'GM-8108',  vehicle:'Kia',      eta:'03/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'04/03/2026', quote:'CTEP571654', company:'The Bump Shop',       purchaser:'Tom Harris',       items:'2 Items', order:'135008',   vehicle:'Subaru',   eta:'16/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'05/03/2026', quote:'CTEP571876', company:'Metro Motors',        purchaser:'Mark Johnston',    items:'4 Items', order:'MM-2307',  vehicle:'BMW',      eta:'04/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'06/03/2026', quote:'CTEP572098', company:'AutoParts Co',        purchaser:'Emma Davis',       items:'1 Item',  order:'AP-2420',  vehicle:'Ford',     eta:'17/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'07/03/2026', quote:'CTEP572320', company:'Repairhub Underwood', purchaser:'Liam Chen',        items:'2 Items', order:'38010',    vehicle:'Nissan',   eta:'05/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'08/03/2026', quote:'CTEP572542', company:'SpeedParts Ltd',      purchaser:'Darren Patterson', items:'3 Items', order:'SP-2118',  vehicle:'Mazda',    eta:'18/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'09/03/2026', quote:'CTEP572764', company:'City Auto Group',     purchaser:'Bailey Schuh',     items:'5 Items', order:'CA-9911',  vehicle:'Hyundai',  eta:'06/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'10/03/2026', quote:'CTEP572986', company:'GM Autobody Repairs', purchaser:'Sarah Nguyen',     items:'2 Items', order:'GM-9209',  vehicle:'Mercedes', eta:'19/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'11/03/2026', quote:'CTEP573208', company:'The Bump Shop',       purchaser:'James Whitfield',  items:'1 Item',  order:'135109',   vehicle:'Toyota',   eta:'07/04/2026', status:'Shipped',            due:'Due This Week'},
+    {date:'12/03/2026', quote:'CTEP573430', company:'Metro Motors',        purchaser:'Tom Harris',       items:'4 Items', order:'MM-3408',  vehicle:'Honda',    eta:'20/04/2026', status:'Hold till due date', due:'Due Later'},
   ],
   'Back Order': [
-    {due:'Overdue',      quote:'8801', purchaser:'SpeedParts Ltd',     items:'3 Items', order:'SP-7701', vehicle:'Toyota',   eta:'01/01/2026'},
-    {due:'Overdue',      quote:'8834', purchaser:'City Auto',          items:'2 Items', order:'CA-8802', vehicle:'BMW',      eta:'05/01/2026'},
-    {due:'Due Later',    quote:'8860', purchaser:'FlexiQuote Systems', items:'1 Item',  order:'FQ-9901', vehicle:'Mercedes', eta:'15/04/2026'},
+    {date:'02/01/2026', quote:'CTEP508801', company:'AutoParts Co',        purchaser:'Liam Chen',        items:'3 Items', order:'AP-7701',  vehicle:'Toyota',   eta:'01/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'05/01/2026', quote:'CTEP512834', company:'City Auto Group',     purchaser:'Emma Davis',       items:'2 Items', order:'CA-8802',  vehicle:'BMW',      eta:'05/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'12/01/2026', quote:'CTEP521860', company:'Repairhub Underwood', purchaser:'Darren Patterson', items:'1 Item',  order:'FQ-9901',  vehicle:'Mercedes', eta:'15/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'14/01/2026', quote:'CTEP525330', company:'The Bump Shop',       purchaser:'Mark Johnston',    items:'4 Items', order:'134250',   vehicle:'Ford',     eta:'06/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'16/01/2026', quote:'CTEP527009', company:'Metro Motors',        purchaser:'Sarah Nguyen',     items:'2 Items', order:'MM-8803',  vehicle:'Mazda',    eta:'07/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'19/01/2026', quote:'CTEP530441', company:'SpeedParts Ltd',      purchaser:'Tom Harris',       items:'5 Items', order:'SP-7714',  vehicle:'Kia',      eta:'16/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'22/01/2026', quote:'CTEP533762', company:'GM Autobody Repairs', purchaser:'Bailey Schuh',     items:'3 Items', order:'GM-7704',  vehicle:'Hyundai',  eta:'08/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'24/01/2026', quote:'CTEP535199', company:'AutoParts Co',        purchaser:'Emma Davis',       items:'1 Item',  order:'AP-1105',  vehicle:'Subaru',   eta:'17/04/2026', status:'Hold till due date', due:'Due Later'},
+    {date:'13/03/2026', quote:'CTEP580100', company:'Repairhub Underwood', purchaser:'Liam Chen',        items:'4 Items', order:'38111',    vehicle:'Nissan',   eta:'09/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'14/03/2026', quote:'CTEP580322', company:'The Bump Shop',       purchaser:'Darren Patterson', items:'2 Items', order:'135210',   vehicle:'Toyota',   eta:'10/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'15/03/2026', quote:'CTEP580544', company:'GM Autobody Repairs', purchaser:'Mark Johnston',    items:'3 Items', order:'GM-0310',  vehicle:'Honda',    eta:'11/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'16/03/2026', quote:'CTEP580766', company:'City Auto Group',     purchaser:'Bailey Schuh',     items:'1 Item',  order:'CA-0112',  vehicle:'Kia',      eta:'12/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'17/03/2026', quote:'CTEP580988', company:'SpeedParts Ltd',      purchaser:'Sarah Nguyen',     items:'5 Items', order:'SP-3219',  vehicle:'Subaru',   eta:'13/01/2026', status:'Shipped',            due:'Overdue'},
+    {date:'18/03/2026', quote:'CTEP581210', company:'Metro Motors',        purchaser:'James Whitfield',  items:'2 Items', order:'MM-4509',  vehicle:'BMW',      eta:'14/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'19/03/2026', quote:'CTEP581432', company:'AutoParts Co',        purchaser:'Tom Harris',       items:'4 Items', order:'AP-3521',  vehicle:'Mercedes', eta:'18/04/2026', status:'Shipped',            due:'Due Later'},
+    {date:'20/03/2026', quote:'CTEP581654', company:'Repairhub Underwood', purchaser:'Emma Davis',       items:'1 Item',  order:'38212',    vehicle:'Ford',     eta:'15/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'21/03/2026', quote:'CTEP581876', company:'The Bump Shop',       purchaser:'Liam Chen',        items:'3 Items', order:'135311',   vehicle:'Hyundai',  eta:'19/04/2026', status:'Shipped',            due:'Due Later'},
+    {date:'22/03/2026', quote:'CTEP582098', company:'GM Autobody Repairs', purchaser:'Darren Patterson', items:'2 Items', order:'GM-1411',  vehicle:'Nissan',   eta:'16/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'23/03/2026', quote:'CTEP582320', company:'City Auto Group',     purchaser:'Mark Johnston',    items:'5 Items', order:'CA-1213',  vehicle:'Mazda',    eta:'20/04/2026', status:'Shipped',            due:'Due Later'},
+    {date:'24/03/2026', quote:'CTEP582542', company:'SpeedParts Ltd',      purchaser:'Bailey Schuh',     items:'1 Item',  order:'SP-4320',  vehicle:'Toyota',   eta:'17/01/2026', status:'Hold till due date', due:'Overdue'},
+    {date:'25/03/2026', quote:'CTEP582764', company:'Metro Motors',        purchaser:'Sarah Nguyen',     items:'4 Items', order:'MM-5610',  vehicle:'Honda',    eta:'21/04/2026', status:'Shipped',            due:'Due Later'},
+    {date:'26/03/2026', quote:'CTEP582986', company:'AutoParts Co',        purchaser:'James Whitfield',  items:'2 Items', order:'AP-4622',  vehicle:'Kia',      eta:'18/01/2026', status:'Hold till due date', due:'Overdue'},
   ],
 };
 
 var values = {'New Orders':'$940.00','Opened':'$0.00','Internal Status Assigned':'$0.00','Supply Date Modified':'$0.00','Back Order':'$0.00'};
 
+var purchaserFilter = '';
+var vehicleFilter = '';
+var orderFilter = '';
+
+function getFiltered(lbl){
+  var s = subRows[lbl];
+  if(purchaserFilter){ var q=purchaserFilter.toLowerCase(); s=s.filter(function(r){return r.purchaser.toLowerCase().indexOf(q)!==-1||r.company.toLowerCase().indexOf(q)!==-1;}); }
+  if(vehicleFilter){   var q=vehicleFilter.toLowerCase();   s=s.filter(function(r){return r.vehicle.toLowerCase().indexOf(q)!==-1;}); }
+  if(orderFilter){     var q=orderFilter.toLowerCase();     s=s.filter(function(r){return r.order.toLowerCase().indexOf(q)!==-1;}); }
+  return s;
+}
+
 function countByDue(s, type){ return s.filter(function(r){return r.due===type;}).length; }
 
 function buildRows(){
   return Object.keys(subRows).map(function(lbl,i){
-    var s = subRows[lbl];
+    var s = getFiltered(lbl);
     return {label:lbl, overdue:countByDue(s,'Overdue'), today:countByDue(s,'Due Today'), week:countByDue(s,'Due This Week'), later:countByDue(s,'Due Later'), value:values[lbl], bg:i%2===0?'#f0f0f0':'#fff'};
   });
 }
@@ -228,7 +338,7 @@ function badge(val, type){
     if(type==='overdue')  { bg='linear-gradient(to bottom,#ff6644,#aa1100)'; color='#fff'; }
     if(type==='today')    { bg='linear-gradient(to bottom,#ffcc44,#cc7700)'; color='#fff'; }
     if(type==='week')     { bg='linear-gradient(to bottom,#88dd55,#2e8800)'; color='#fff'; }
-    if(type==='later')    { bg='linear-gradient(to bottom,#66cc88,#1a7744)'; color='#fff'; }
+    if(type==='later')    { bg='linear-gradient(to bottom,#88dd55,#2e8800)'; color='#fff'; }
   }
   return '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:'+bg+';color:'+color+';font-weight:bold;font-size:12px">'+val+'</span>';
 }
@@ -254,31 +364,45 @@ function render(){
     tbody.appendChild(tr);
 
     if(openRow===r.label){
-      var s=subRows[r.label];
+      var s=getFiltered(r.label);
       var ex=document.createElement('tr');
       if(s.length>0){
         ex.innerHTML='<td colspan="7" style="padding:0"><table style="width:100%;border-collapse:collapse;font-size:11px">'+
           '<thead><tr style="background:#cde8a8;border-bottom:1px solid #b5d890">'+
-          '<th style="padding:3px 8px;text-align:left">Due</th>'+
-          '<th style="padding:3px 8px;text-align:left">Quote</th>'+
-          '<th style="padding:3px 8px;text-align:left">Purchaser</th>'+
-          '<th style="padding:3px 8px;text-align:left">Order</th>'+
-          '<th style="padding:3px 8px;text-align:left">ETA</th>'+
-          '<th style="padding:3px 8px;text-align:left">Status</th>'+
-          '<th style="padding:3px 8px;text-align:left">Options</th></tr></thead><tbody>'+
-          s.map(function(d){
-            return '<tr style="background:#cce890;border-bottom:1px solid #b8e080">'+
-              '<td style="padding:4px 8px"><span style="background:#cc0000;color:#fff;font-size:10px;font-weight:bold;padding:2px 5px;border-radius:2px">'+d.due+'</span></td>'+
-              '<td style="padding:4px 8px"><a style="color:#0645ad;text-decoration:underline" href="#">'+d.quote+'</a></td>'+
-              '<td style="padding:4px 8px"><div>'+d.purchaser+'</div><div style="font-size:10px;color:#666">'+d.items+'</div></td>'+
-              '<td style="padding:4px 8px"><div>'+d.order+'</div><div style="font-size:10px;color:#666">'+d.vehicle+'</div></td>'+
-              '<td style="padding:4px 8px">'+d.eta+'</td>'+
-              '<td style="padding:4px 8px"></td>'+
-              '<td style="padding:4px 8px">'+
-                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#e8c030;margin:0 1px">📋</button>'+
-                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#f0e870;margin:0 1px">📄</button>'+
-                '<button style="width:22px;height:19px;border:1px solid #999;border-radius:2px;cursor:pointer;background:#88b4cc;margin:0 1px">🖨</button>'+
-              '</td></tr>';
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">Date Ordered</th>'+
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">Quote No</th>'+
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">Purchaser</th>'+
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">Order</th>'+
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">ETA</th>'+
+          '<th style="padding:4px 8px;text-align:left;font-size:11px">Status</th>'+
+          '<th style="padding:4px 8px;text-align:center;font-size:11px">Print</th>'+
+          '<th style="padding:4px 8px;text-align:center;font-size:11px">Open</th>'+
+          '</tr></thead><tbody>'+
+          s.map(function(d,i){
+            var bg = i%2===0 ? '#eaf7d8' : '#d6f0b8';
+            return '<tr style="background:'+bg+';border-bottom:1px solid #c8e89a">'+
+              '<td style="padding:9px 8px;font-size:11px;white-space:nowrap">'+d.date+'</td>'+
+              '<td style="padding:9px 8px">'+
+                '<div style="font-weight:bold;color:#0645ad;cursor:pointer;text-decoration:underline;font-size:11px">'+d.quote+'</div>'+
+                '<div style="font-size:10px;color:#555;margin-top:1px">'+d.company+'</div>'+
+              '</td>'+
+              '<td style="padding:9px 8px">'+
+                '<div style="color:#8a7000;font-weight:600;font-size:11px">'+d.purchaser+'</div>'+
+                '<div style="font-size:10px;color:#888;margin-top:1px">'+d.items+'</div>'+
+              '</td>'+
+              '<td style="padding:9px 8px">'+
+                '<div style="font-weight:bold;font-size:11px">'+d.order+'</div>'+
+                '<div style="font-size:10px;color:#267326;font-weight:600;margin-top:1px">'+d.vehicle+'</div>'+
+              '</td>'+
+              '<td style="padding:9px 8px;font-size:11px;white-space:nowrap">'+d.eta+' <span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle;color:#5a8fc2">calendar_month</span></td>'+
+              '<td style="padding:9px 8px;font-size:11px">'+d.status+'</td>'+
+              '<td style="padding:9px 8px;text-align:center">'+
+                '<button style="border:none;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:2px" title="Print"><span class="material-symbols-outlined" style="font-size:18px;color:#555">print</span></button>'+
+              '</td>'+
+              '<td style="padding:9px 8px;text-align:center">'+
+                '<button style="border:none;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:2px" title="Open"><span class="material-symbols-outlined" style="font-size:18px;color:#555">folder_open</span></button>'+
+              '</td>'+
+            '</tr>';
           }).join('')+
         '</tbody></table></td>';
       } else {
@@ -289,6 +413,20 @@ function render(){
   });
 }
 render();
+
+function clearFilter(inputId, type){
+  var el = document.getElementById(inputId);
+  el.value = '';
+  if(type==='purchaser') purchaserFilter='';
+  if(type==='vehicle')   vehicleFilter='';
+  if(type==='order')     orderFilter='';
+  document.getElementById(type+'-clear').style.display='none';
+  render();
+}
+
+document.getElementById('purchaser-filter').addEventListener('input', function(){ purchaserFilter=this.value; document.getElementById('purchaser-clear').style.display=this.value?'block':'none'; render(); });
+document.getElementById('vehicle-filter').addEventListener('input',   function(){ vehicleFilter=this.value;   document.getElementById('vehicle-clear').style.display=this.value?'block':'none'; render(); });
+document.getElementById('order-filter').addEventListener('input',     function(){ orderFilter=this.value;     document.getElementById('order-clear').style.display=this.value?'block':'none'; render(); });
 </script>
 </body>
 </html>
