@@ -95,7 +95,7 @@ a:hover{text-decoration:underline}
       </svg>
     </div>
     <div class="topnav">
-      <a href="#">🏠 Dashboard</a>
+      <a href="dashboard.html">🏠 Dashboard</a>
       <a href="#">👤 TeamViewer</a>
       <a href="#">📊 Reports</a>
       <a href="#">⚙ Settings</a>
@@ -147,14 +147,25 @@ a:hover{text-decoration:underline}
   <div class="content">
     <div class="filterbox">
       <div style="display:flex;gap:8px;width:100%">
-        <div class="fg" style="flex:1"><label>Purchaser</label><div style="position:relative"><input id="purchaser-filter" placeholder="Purchaser" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="purchaser-clear" onclick="clearFilter('purchaser-filter','purchaser')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
+        <div class="fg" style="flex:1;position:relative" id="purchaser-ms-wrap">
+          <label>Purchaser</label>
+          <div id="purchaser-ms-box" onclick="togglePurchaserDrop()" style="display:flex;align-items:center;border:1px solid #aaa;background:#fff;cursor:pointer;height:30px;padding:4px 32px 4px 8px;position:relative;box-sizing:border-box;width:100%">
+            <span id="purchaser-ms-label" style="font-size:12px;color:#999;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Purchaser</span>
+            <span onclick="event.stopPropagation();clearPurchaserFilter()" id="purchaser-ms-clear" style="display:none;position:absolute;right:22px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1">&times;</span>
+            <img src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><polyline points="1,1 6,7 11,1" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' style="position:absolute;right:16px;top:50%;transform:translateY(-50%);width:10px;height:6px;pointer-events:none">
+          </div>
+          <div id="purchaser-ms-drop" style="display:none;position:absolute;top:calc(100% + 2px);left:0;right:0;background:#fff;border:1px solid #d0d0d0;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,0.12);z-index:999;min-width:180px;overflow:hidden">
+            <div style="padding:5px 5px 4px;border-bottom:1px solid #eee"><input id="purchaser-ms-search" placeholder="Search purchaser..." oninput="filterPurchaserOptions()" style="width:100%;box-sizing:border-box;font-size:11px;padding:3px 6px;border:1px solid #ccc;border-radius:3px;outline:none"></div>
+            <div id="purchaser-ms-list" style="max-height:160px;overflow-y:auto;padding:3px 2px"></div>
+          </div>
+        </div>
         <div class="fg" style="flex:1"><label>Vehicle</label><div style="position:relative"><input id="vehicle-filter" placeholder="Search Vehicle" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="vehicle-clear" onclick="clearFilter('vehicle-filter','vehicle')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
         <div class="fg" style="flex:1"><label>Purchase Order</label><div style="position:relative"><input id="order-filter" placeholder="Search Order #" style="width:100%;padding-right:22px;box-sizing:border-box"><span id="order-clear" onclick="clearFilter('order-filter','order')" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);cursor:pointer;color:#999;font-size:14px;line-height:1;user-select:none">&times;</span></div></div>
       </div>
       <div style="display:flex;gap:8px;width:100%">
-        <div class="fg" style="flex:1"><label>Status</label><select><option>All</option></select></div>
-        <div class="fg" style="flex:1"><label>Sales Rep</label><select><option>All</option></select></div>
-        <div class="fg" style="flex:1"><label>Show Recent</label><select><option>None</option></select></div>
+        <div class="fg" style="flex:1"><label>Status</label><select style="appearance:none;-webkit-appearance:none;padding-left:8px;padding-right:32px;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22><polyline points=%221,1 6,7 11,1%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>') no-repeat calc(100% - 16px) center / 10px 6px"><option>All</option></select></div>
+        <div class="fg" style="flex:1"><label>Sales Rep</label><select style="appearance:none;-webkit-appearance:none;padding-left:8px;padding-right:32px;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22><polyline points=%221,1 6,7 11,1%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>') no-repeat calc(100% - 16px) center / 10px 6px"><option>All</option></select></div>
+        <div class="fg" style="flex:1"><label>Show Recent</label><select style="appearance:none;-webkit-appearance:none;padding-left:8px;padding-right:32px;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22><polyline points=%221,1 6,7 11,1%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>') no-repeat calc(100% - 16px) center / 10px 6px"><option>None</option></select></div>
       </div>
     </div>
 
@@ -311,13 +322,68 @@ var subRows = {
 
 var values = {'New Orders':'$940.00','Opened':'$0.00','Internal Status Assigned':'$0.00','Supply Date Modified':'$0.00','Back Order':'$0.00'};
 
-var purchaserFilter = '';
+var purchaserSelected = [];
 var vehicleFilter = '';
 var orderFilter = '';
 
+// collect unique purchasers from all subRows
+var allPurchasers = (function(){
+  var seen = {}, list = [];
+  Object.values(subRows).forEach(function(rows){ rows.forEach(function(r){ if(!seen[r.purchaser]){seen[r.purchaser]=1;list.push(r.purchaser);} }); });
+  return list.sort();
+})();
+
+function buildPurchaserList(filter){
+  var el = document.getElementById('purchaser-ms-list');
+  var q = (filter||'').toLowerCase();
+  el.innerHTML = allPurchasers.filter(function(p){ return p.toLowerCase().indexOf(q)!==-1; }).map(function(p){
+    var checked = purchaserSelected.indexOf(p)!==-1;
+    return '<label style="display:flex;align-items:center;gap:5px;padding:3px 6px;cursor:pointer;font-size:11px;font-weight:normal;border-radius:3px;user-select:none;line-height:1.4" onmouseover="this.style.background=\'#eef3ff\'" onmouseout="this.style.background=\'\'">'+
+      '<input type="checkbox" value="'+p+'" '+(checked?'checked':'')+' onchange="togglePurchaser(this)" style="cursor:pointer;width:14px;height:14px;min-width:14px;min-height:14px;margin:0;accent-color:#2b6cb0">'+p+'</label>';
+  }).join('');
+}
+
+function togglePurchaserDrop(){
+  var drop = document.getElementById('purchaser-ms-drop');
+  var open = drop.style.display!=='none';
+  drop.style.display = open ? 'none' : 'block';
+  if(!open){ document.getElementById('purchaser-ms-search').value=''; buildPurchaserList(''); setTimeout(function(){ document.getElementById('purchaser-ms-search').focus(); },50); }
+}
+
+function filterPurchaserOptions(){
+  buildPurchaserList(document.getElementById('purchaser-ms-search').value);
+}
+
+function togglePurchaser(cb){
+  if(cb.checked){ if(purchaserSelected.indexOf(cb.value)===-1) purchaserSelected.push(cb.value); }
+  else { purchaserSelected = purchaserSelected.filter(function(p){ return p!==cb.value; }); }
+  updatePurchaserLabel();
+  render();
+}
+
+function updatePurchaserLabel(){
+  var lbl = document.getElementById('purchaser-ms-label');
+  var clr = document.getElementById('purchaser-ms-clear');
+  if(purchaserSelected.length===0){ lbl.textContent='Purchaser'; lbl.style.color='#999'; clr.style.display='none'; }
+  else if(purchaserSelected.length===1){ lbl.textContent=purchaserSelected[0]; lbl.style.color='#333'; clr.style.display='inline'; }
+  else { lbl.textContent=purchaserSelected.length+' selected'; lbl.style.color='#333'; clr.style.display='inline'; }
+}
+
+function clearPurchaserFilter(){
+  purchaserSelected=[];
+  updatePurchaserLabel();
+  buildPurchaserList('');
+  render();
+}
+
+document.addEventListener('click', function(e){
+  var wrap = document.getElementById('purchaser-ms-wrap');
+  if(wrap && !wrap.contains(e.target)){ document.getElementById('purchaser-ms-drop').style.display='none'; }
+});
+
 function getFiltered(lbl){
   var s = subRows[lbl];
-  if(purchaserFilter){ var q=purchaserFilter.toLowerCase(); s=s.filter(function(r){return r.purchaser.toLowerCase().indexOf(q)!==-1||r.company.toLowerCase().indexOf(q)!==-1;}); }
+  if(purchaserSelected.length>0){ s=s.filter(function(r){ return purchaserSelected.indexOf(r.purchaser)!==-1; }); }
   if(vehicleFilter){   var q=vehicleFilter.toLowerCase();   s=s.filter(function(r){return r.vehicle.toLowerCase().indexOf(q)!==-1;}); }
   if(orderFilter){     var q=orderFilter.toLowerCase();     s=s.filter(function(r){return r.order.toLowerCase().indexOf(q)!==-1;}); }
   return s;
@@ -417,14 +483,13 @@ render();
 function clearFilter(inputId, type){
   var el = document.getElementById(inputId);
   el.value = '';
-  if(type==='purchaser') purchaserFilter='';
   if(type==='vehicle')   vehicleFilter='';
   if(type==='order')     orderFilter='';
   document.getElementById(type+'-clear').style.display='none';
   render();
 }
 
-document.getElementById('purchaser-filter').addEventListener('input', function(){ purchaserFilter=this.value; document.getElementById('purchaser-clear').style.display=this.value?'block':'none'; render(); });
+buildPurchaserList('');
 document.getElementById('vehicle-filter').addEventListener('input',   function(){ vehicleFilter=this.value;   document.getElementById('vehicle-clear').style.display=this.value?'block':'none'; render(); });
 document.getElementById('order-filter').addEventListener('input',     function(){ orderFilter=this.value;     document.getElementById('order-clear').style.display=this.value?'block':'none'; render(); });
 </script>

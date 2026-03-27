@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PartsCheck - Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#efefef}
+body{font-family:Arial,Helvetica,sans-serif;font-size:12px;width:888px;margin:0 auto}
+a{color:#0645ad;text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{padding:6px 4px;display:flex;align-items:center;justify-content:space-between}
+.topnav{display:flex;gap:12px}
+.topnav a{color:#000;font-size:13px;display:flex;align-items:center;gap:3px}
+.searchbar{display:flex;gap:2px}
+.searchbar input{padding:2px 6px;font-size:11px;border:1px solid #ccc;width:120px}
+.searchbar button{background:#5588bb;border:1px solid #3a6a99;color:#fff;padding:2px 8px;font-size:11px;cursor:pointer}
+.panels{display:flex;gap:3px;margin-top:4px;align-items:flex-start;margin-bottom:24px}
+.panel{border:1px solid #aaa;border-radius:3px;overflow:hidden;background:#fff;flex:1}
+.panel-hdr{padding:6px 8px;display:flex;align-items:center;gap:6px;background:linear-gradient(to bottom,#5296cc,#2b6cb0);min-height:38px}
+.panel-hdr .ptitle{color:#fff;font-size:15px;font-weight:bold}
+.panel-hdr .picon{font-size:18px;display:flex;align-items:center}
+.panel-row{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px dashed #d0d0d0;font-size:12px}
+.panel-row:last-child{border-bottom:none}
+.panel-row a{color:#333;font-size:12px}
+.panel-row a:hover{text-decoration:underline;color:#0645ad}
+.bdg{display:inline-block;background:linear-gradient(to bottom,#ff6644,#aa1100);color:#fff;font-size:12px;border-radius:10px;padding:3px 10px;min-width:28px;text-align:center;line-height:16px}
+.bdg-o{background:linear-gradient(to bottom,#ffaa44,#cc6600)}
+.footer{background:transparent;padding:6px 0;font-size:11px;color:#444;margin-top:6px}
+
+/* WRAPPER */
+.wrap{background:#fff;border:1px solid #ccc;margin-bottom:8px;padding:0}
+
+/* STATS */
+.stats-header{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 16px 10px}
+.stats-header .sh-left{display:flex;align-items:center;gap:8px}
+.stats-header .sh-left .sh-icon{width:32px;height:32px}
+.stats-header h2{font-size:16px;color:#2b4a8f;font-weight:bold;margin-bottom:2px}
+.stats-header p{font-size:11px;color:#666}
+.stats-header .sh-date{font-size:13px;font-weight:bold;color:#2b4a8f}
+
+.stat-boxes{display:flex;border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin:0 16px}
+.stat-box{flex:1;padding:24px 14px;border-right:1px solid #ddd;min-height:120px}
+.stat-box:last-child{border-right:none}
+.stat-box.blue{background:linear-gradient(135deg,#3a7fc1,#1a4d8f);color:#fff}
+.stat-num{font-size:32px;font-weight:bold;color:#2b4a8f;line-height:1}
+.stat-box.blue .stat-num{color:#fff}
+.stat-label{font-size:12px;font-weight:bold;color:#333;margin:4px 0 2px}
+.stat-box.blue .stat-label{color:#fff}
+.stat-sub{font-size:11px;color:#666}
+.stat-box.blue .stat-sub{color:rgba(255,255,255,0.8)}
+.stat-change{font-size:11px;color:#888;margin-top:16px;display:flex;align-items:center;gap:2px}
+.stat-hrs{font-size:28px;font-weight:bold;color:#fff;line-height:1;margin-bottom:4px}
+.stat-hrs-bar{height:1px;background:#0db14b;margin:8px 0 4px}
+.stat-hrs-bar-fill{display:none}
+
+.stats-note{padding:8px 14px;font-size:11px;color:#555;display:flex;align-items:center;gap:6px}
+.stats-note .material-symbols-outlined{font-size:14px;color:#888}
+
+/* CONTENT CARDS */
+.cards-section{padding:14px 16px}
+.cards-row{display:flex;gap:0;border-top:1px solid #eee;padding-top:14px;margin-top:0}
+.cards-row + .cards-row{margin-top:0;border-top:1px solid #eee;padding-top:14px}
+.card{flex:1;padding:0 20px 14px 0;border-right:1px solid #eee}
+.card:last-child{border-right:none;padding-right:0}
+.card:not(:first-child){padding-left:20px;padding-right:0}
+.card:last-child:not(:first-child){padding-left:20px}
+.card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.card-hdr img{width:22px;height:22px}
+.card-hdr h3{font-size:14px;color:#2b4a8f;font-weight:bold}
+.card-hdr .stars{color:#ccc;font-size:16px;letter-spacing:2px}
+.card p{font-size:12px;color:#555;line-height:1.6;margin-bottom:12px}
+.card p.orange{color:#c87000}
+.card .read-more{font-size:12px;color:#333;display:block;margin-top:auto}
+.card .read-more.red{color:#c0392b;font-weight:bold;text-decoration:underline}
+.card-bottom{margin-top:8px}
+
+/* FOOTER */
+.footer{background:#fff;border-top:1px solid #ddd;padding:6px 12px;font-size:11px;color:#333;display:flex;justify-content:space-between}
+.footer a{color:#888}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="48" viewBox="0 0 482.2 92.8">
+      <defs><style>.st0{fill:#85c776}.st1{fill:#57a84c}.st2{fill:#0db14b}.st3{fill:#595a5c}</style></defs>
+      <polygon class="st1" points="61.1 63.6 51.6 58.3 51.6 58.3 5.3 54.1 0 63.6 61.1 63.6 61.1 63.6"/>
+      <polygon class="st0" points="5.3 54.1 9.5 7.8 0 2.5 0 2.5 0 63.6 0 63.6 5.3 54.1 5.3 54.1"/>
+      <path class="st2" d="M11.8,26.1c1.3-1.3,2.6-2.5,4.1-3.9,4.7,3.3,9.4,6.6,14.3,10.1.5-.7,1.1-1.3,1.6-2,8.3-10.6,17.7-20.2,28.5-28.4C62.9,0,65.5-.2,68.9.2c-16,15.5-27.4,33.9-38.6,52.5-6.2-8.8-12.3-17.6-18.6-26.6Z"/>
+      <path class="st1" d="M9.5,7.8l34.5,3.1c3.1-3,6.2-5.8,9.4-8.5H0l9.5,5.3h0Z"/>
+      <path class="st0" d="M54.9,21.9l-3.3,36.4,9.5,5.3V14c-2.1,2.5-4.2,5.2-6.2,7.8Z"/>
+      <g>
+        <path class="st3" d="M99.3,47.8h-8.3v14.7h-10.9V14h19.8c11.8,0,16.2,4.7,16.2,13.8v6.3c0,9.1-5,13.7-16.8,13.7ZM105.2,28.8c0-3.5-1.2-5.1-5.8-5.1h-8.3v14.6h8.3c4.8,0,5.8-1.8,5.8-5.3v-4.2Z"/>
+        <path class="st3" d="M160,62.6h-11.4l-2.6-9.5h-16.3l-2.6,9.5h-11.4l14.8-48.5h14.6l14.9,48.5ZM132.3,44h11.1l-5.5-20.3-5.6,20.3Z"/>
+        <path class="st3" d="M182.4,47.5h-6.4v15.1h-10.9V14h20.2c11.8,0,16.2,4.7,16.2,13.8v6c0,6-2.2,10.1-7.1,12.2l11.7,16.6h-13l-10.7-15.1ZM190.5,28.8c0-3.6-1.4-5.1-5.8-5.1h-8.7v14.3h8.7c4.7,0,5.8-1.7,5.8-5.3v-3.9Z"/>
+        <path class="st3" d="M230.9,23.7v38.8h-10.9V23.7h-13v-9.7h37v9.7h-13Z"/>
+        <path class="st3" d="M263.6,63.3c-5.6,0-11.5-1.2-15.7-3.1l1.8-8.5c4.4,1.4,9,2.3,14,2.3s6.7-1.1,6.7-5.2-.2-4.9-8.2-6.6c-11.7-2.6-13.5-4.9-13.5-15.4s3.4-13.6,16.8-13.6,9.3.4,14.7,1.6l-1.1,9.2c-5.5-.9-9.1-1.4-13.5-1.4s-6,.9-6,4.4.2,4.7,7.9,6.6c13.1,3.1,13.8,5.7,13.8,15.2s-3.1,14.4-17.8,14.4Z"/>
+        <path class="st2" d="M297.8,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/>
+        <path class="st2" d="M351.1,62.6v-19.5h-15.7v19.5h-10.9V14h10.9v19.3h15.7V14h10.9v48.5h-10.9Z"/>
+        <path class="st2" d="M369.6,62.6V14h30.5v9.7h-19.6v8.9h18.1v9.7h-18.1v10.6h19.6v9.7h-30.5Z"/>
+        <path class="st2" d="M416.7,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/>
+        <path class="st2" d="M443.4,14h10.9v48.5h-10.9V14ZM455.7,37.8l13.1-23.8h12.3l-13.6,23.8,14.6,24.8h-12.3l-14.1-24.8Z"/>
+      </g>
+      <g>
+        <path class="st3" d="M84,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+        <path class="st3" d="M108.5,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+        <path class="st3" d="M122.3,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM120.8,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+        <path class="st3" d="M131.4,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+        <path class="st3" d="M140.1,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+        <path class="st3" d="M142.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+        <path class="st3" d="M158.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+        <path class="st3" d="M167.3,72.4v-2.8h1.5v2.8h-1.5ZM167.3,87.4v-12.7h1.5v12.7h-1.5Z"/>
+        <path class="st3" d="M188.3,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+        <path class="st3" d="M202.9,83.8c0,2.3-1,3.9-3.9,3.9s-2.4-.1-3.9-.4v5.3l-1.5.2v-18h1.4v1.2c1.4-1,2.9-1.5,4.4-1.5,2.5,0,3.6,1.2,3.6,3.5v5.8ZM195,85.9c1.4.3,2.7.4,4,.4s2.3-.8,2.3-2.6v-5.8c0-1.5-.5-2.2-2.2-2.2s-2.9.7-4.1,1.6v8.4Z"/>
+        <path class="st3" d="M206.3,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+        <path class="st3" d="M215.9,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM212.6,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+        <path class="st3" d="M223.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+        <path class="st3" d="M239.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+        <path class="st3" d="M254.9,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+        <path class="st3" d="M263,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+        <path class="st3" d="M269.3,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM265.9,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+        <path class="st3" d="M285.5,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM284,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+        <path class="st3" d="M304.7,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+        <path class="st3" d="M310,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+        <path class="st3" d="M315.4,72.4v-2.8h1.5v2.8h-1.5ZM315.4,87.4v-12.7h1.5v12.7h-1.5Z"/>
+        <path class="st3" d="M328.6,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+        <path class="st3" d="M338,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM334.7,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+        <path class="st3" d="M345.4,78.4c0-2.3,1-3.9,3.9-3.9s2.4.1,3.9.4v-5.3l1.5-.2v18.1h-1.4v-1.2c-1.4,1-2.9,1.5-4.3,1.5-2.5,0-3.6-1.2-3.6-3.5v-5.8ZM353.2,76.3c-1.4-.3-2.7-.4-4-.4s-2.3.8-2.3,2.6v5.8c0,1.5.5,2.2,2.2,2.2s2.9-.7,4.1-1.6v-8.4Z"/>
+        <path class="st3" d="M358.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="topnav">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="#">👤 TeamViewer</a>
+    <a href="#">📊 Reports</a>
+    <a href="#">⚙ Settings</a>
+    <a href="#">🔓 Logout</a>
+  </div>
+  <div class="searchbar">
+    <input placeholder="Search here">
+    <button>🔍</button>
+  </div>
+</div>
+
+<!-- FOUR PANELS -->
+<div class="panels">
+  <div class="panel">
+    <div class="panel-hdr"><span class="picon"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24'><path fill='white' d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z'/></svg>" style="width:18px;height:18px"></span><span class="ptitle">Quotes</span></div>
+    <div class="panel-row"><a href="quotes.html">New Quote Request</a><span class="bdg">4</span></div>
+    <div class="panel-row">Quotes In Progress<span class="bdg bdg-o">7</span></div>
+  </div>
+  <div class="panel">
+    <div class="panel-hdr"><span class="ptitle">My Orders</span></div>
+    <div class="panel-row"><a href="index.html">All Orders</a><span class="bdg">54</span></div>
+    <div class="panel-row">ETA Requests</div>
+    <div class="panel-row">ETA Overdue<span class="bdg">20</span></div>
+  </div>
+  <div class="panel">
+    <div class="panel-hdr"><span class="ptitle">Credit Management</span></div>
+    <div class="panel-row">All Credit Requests<span class="bdg">10</span></div>
+    <div class="panel-row">Credits Not Opened<span class="bdg">15</span></div>
+    <div class="panel-row">Credits Opened<span class="bdg bdg-o">7</span></div>
+  </div>
+  <div class="panel">
+    <div class="panel-hdr"><span class="ptitle">Reports &amp; Tools</span></div>
+    <div class="panel-row">Contact Us</div>
+    <div class="panel-row">New Messages<span class="bdg" style="background:linear-gradient(to bottom,#88dd55,#2e8800)">12</span></div>
+    <div class="panel-row">New Feedback<span class="bdg bdg-o">37</span></div>
+    <div class="panel-row">Fill Rate Reporting</div>
+  </div>
+</div>
+
+<!-- MAIN WRAP -->
+<div class="wrap">
+  <!-- STATS HEADER -->
+  <div class="stats-header">
+    <div class="sh-left">
+      <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="30" height="30" rx="4" fill="#e8eef8" stroke="#aabcd8" stroke-width="1.5"/>
+        <rect x="5" y="16" width="4" height="11" fill="#4a90d9"/>
+        <rect x="12" y="10" width="4" height="17" fill="#4a90d9"/>
+        <rect x="19" y="13" width="4" height="14" fill="#4a90d9"/>
+        <polyline points="7,14 14,8 21,11 27,5" fill="none" stroke="#2ecc40" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h2>Last month in numbers</h2>
+        <p>A snapshot of how PartsCheck powered your business</p>
+      </div>
+    </div>
+    <div class="sh-date">February 2026</div>
+  </div>
+
+  <!-- STAT BOXES -->
+  <div class="stat-boxes">
+    <div class="stat-box" style="text-align:center;vertical-align:top;border-left:1px solid #ddd;border-right:1px solid #ddd">
+      <div class="stat-num">49</div>
+      <div class="stat-label">Quote Requests</div>
+      <div class="stat-sub">Total Parts: 318</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9660; 19.7% decrease</div>
+    </div>
+    <div class="stat-box" style="text-align:center;vertical-align:top">
+      <div class="stat-num">31</div>
+      <div class="stat-label">Orders Received</div>
+      <div class="stat-sub">Total Parts: 94</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 4.2% increase</div>
+    </div>
+    <div class="stat-box" style="text-align:center;vertical-align:top">
+      <div class="stat-num">$12,450</div>
+      <div class="stat-label">Total Revenue</div>
+      <div class="stat-sub">$38.50 Average order value</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 2.1% increase</div>
+    </div>
+    <div class="stat-box blue" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;flex:1.5">
+      <div style="display:flex;align-items:baseline;gap:6px">
+        <div style="font-size:58px;font-weight:bold;color:#fff;line-height:1">312</div>
+        <span style="font-size:16px;color:#fff;font-weight:bold">Hrs</span>
+      </div>
+      <div class="stat-hrs-bar" style="width:100%"><div class="stat-hrs-bar-fill"></div></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.9);margin-top:auto">Quote and admin time saved</div>
+    </div>
+  </div>
+
+  <div class="stats-note">
+    <span class="material-symbols-outlined">info</span>
+    Insights are shown monthly. Send at least 10 quotes and 5 orders to see your results at the start of next month.
+  </div>
+
+  <!-- CARDS ROW 1 -->
+  <div class="cards-section">
+    <div class="cards-row">
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="1" y="1" width="20" height="20" rx="3" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1.5"/><polyline points="5,11 9,15 17,7" fill="none" stroke="#2e7d32" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4 L10 4" stroke="#66bb6a" stroke-width="1.5"/></svg>
+          <h3>Quote upload options!</h3>
+        </div>
+        <p>Most dealer management systems have the ability to upload a quote into PartsCheck without the need of re keying information.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><polygon points="11,2 13.5,8 20,8.5 15,13 17,19.5 11,16 5,19.5 7,13 2,8.5 8.5,8" fill="#f4c542" stroke="#e6a800" stroke-width="1"/></svg>
+          <h3>Your Current PartsCheck Rating</h3>
+          <span class="stars">&#9734;&#9734;&#9734;&#9734;&#9734;</span>
+        </div>
+        <p>Be recognised as a top rated PartsCheck supplier so you can stand out from the crowd! This helps repairers who may be looking for higher performing suppliers.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="1" y="1" width="20" height="20" rx="3" fill="#e3f2fd" stroke="#42a5f5" stroke-width="1.5"/><rect x="4" y="8" width="6" height="10" fill="#1565c0"/><rect x="12" y="5" width="6" height="13" fill="#42a5f5"/></svg>
+          <h3>Promote your Business FREE!</h3>
+        </div>
+        <p>Let all the PartsCheck repairers know your are now using PartsCheck by using our electronic business card feature. It's free and you have access to every repairer in every state of Australia. This handy feature also allows you to send out weekly specials or promotions to the PartsCheck community.</p>
+        <a href="#" class="read-more red">Send Business Cards Now!</a>
+      </div>
+    </div>
+
+    <!-- CARDS ROW 2 -->
+    <div class="cards-row" style="margin-top:14px">
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="#fff3e0" stroke="#ffa726" stroke-width="1.5"/><text x="11" y="15" text-anchor="middle" font-size="12" fill="#e65100">&#9874;</text></svg>
+          <h3>Troubleshooting</h3>
+        </div>
+        <p>This page displays technical information that might be useful when trying to solve a problem while using PartsCheck.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="1" y="1" width="20" height="20" rx="2" fill="#e8eaf6" stroke="#7986cb" stroke-width="1.5"/><rect x="4" y="4" width="14" height="3" rx="1" fill="#7986cb"/><rect x="4" y="10" width="9" height="2" rx="1" fill="#9fa8da"/><rect x="4" y="14" width="6" height="2" rx="1" fill="#9fa8da"/></svg>
+          <h3>Book For Online Training</h3>
+        </div>
+        <p>Please contact us to discuss your training requirements or book in for an online training session.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="card">
+        <div class="card-hdr">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="1" y="3" width="20" height="18" rx="2" fill="#fff" stroke="#aaa" stroke-width="1.5"/><rect x="1" y="3" width="20" height="5" rx="2" fill="#e53935"/><rect x="7" y="1" width="2" height="5" rx="1" fill="#aaa"/><rect x="13" y="1" width="2" height="5" rx="1" fill="#aaa"/><text x="11" y="17" text-anchor="middle" font-size="8" font-weight="bold" fill="#333">31</text></svg>
+          <h3>Business Closure Dates</h3>
+        </div>
+        <p>Setup your business closures to assist repairers when quoting. This may also include periods where you are not quoting due to Internet Outage and other reasons.</p>
+        <a href="#" class="read-more red">Set Closure Dates</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Logged in as s5 <em>(Reconditioner)</em> <strong>10:09am</strong></div>
+
+</body>
+</html>
