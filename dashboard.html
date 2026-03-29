@@ -30,9 +30,10 @@ a:hover{text-decoration:underline}
 .footer{background:transparent;padding:6px 0;font-size:11px;color:#444;margin-top:6px}
 
 /* WRAPPER */
-.wrap{background:#fff;border:1px solid #ccc;margin-bottom:8px;padding:0}
+.wrap{background:#efefef;padding:5px;border:1px solid #ccc}
 
 /* STATS */
+.content{background:#fff;padding:6px}
 .stats-header{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 16px 10px}
 .stats-header .sh-left{display:flex;align-items:center;gap:8px}
 .stats-header .sh-left .sh-icon{width:32px;height:32px}
@@ -40,7 +41,7 @@ a:hover{text-decoration:underline}
 .stats-header p{font-size:11px;color:#666}
 .stats-header .sh-date{font-size:13px;font-weight:bold;color:#2b4a8f}
 
-.stat-boxes{display:flex;border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin:0 16px}
+.stat-boxes{display:flex;border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin:0}
 .stat-box{flex:1;padding:24px 14px;border-right:1px solid #ddd;min-height:120px}
 .stat-box:last-child{border-right:none}
 .stat-box.blue{background:linear-gradient(135deg,#3a7fc1,#1a4d8f);color:#fff}
@@ -77,11 +78,12 @@ a:hover{text-decoration:underline}
 .card-bottom{margin-top:8px}
 
 /* FOOTER */
-.footer{background:#fff;border-top:1px solid #ddd;padding:6px 12px;font-size:11px;color:#333;display:flex;justify-content:space-between}
+.footer{background:transparent;border-top:none;padding:6px 12px;font-size:11px;color:#333;display:flex;justify-content:space-between}
 .footer a{color:#888}
 </style>
 </head>
 <body>
+<div class="wrap">
 
 <!-- TOP BAR -->
 <div class="topbar">
@@ -147,36 +149,11 @@ a:hover{text-decoration:underline}
   </div>
 </div>
 
-<!-- FOUR PANELS -->
-<div class="panels">
-  <div class="panel">
-    <div class="panel-hdr"><span class="picon"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24'><path fill='white' d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z'/></svg>" style="width:18px;height:18px"></span><span class="ptitle">Quotes</span></div>
-    <div class="panel-row"><a href="quotes.html">New Quote Request</a><span class="bdg">4</span></div>
-    <div class="panel-row">Quotes In Progress<span class="bdg bdg-o">7</span></div>
-  </div>
-  <div class="panel">
-    <div class="panel-hdr"><span class="ptitle">My Orders</span></div>
-    <div class="panel-row"><a href="index.html">All Orders</a><span class="bdg">54</span></div>
-    <div class="panel-row">ETA Requests</div>
-    <div class="panel-row">ETA Overdue<span class="bdg">20</span></div>
-  </div>
-  <div class="panel">
-    <div class="panel-hdr"><span class="ptitle">Credit Management</span></div>
-    <div class="panel-row">All Credit Requests<span class="bdg">10</span></div>
-    <div class="panel-row">Credits Not Opened<span class="bdg">15</span></div>
-    <div class="panel-row">Credits Opened<span class="bdg bdg-o">7</span></div>
-  </div>
-  <div class="panel">
-    <div class="panel-hdr"><span class="ptitle">Reports &amp; Tools</span></div>
-    <div class="panel-row">Contact Us</div>
-    <div class="panel-row">New Messages<span class="bdg" style="background:linear-gradient(to bottom,#88dd55,#2e8800)">12</span></div>
-    <div class="panel-row">New Feedback<span class="bdg bdg-o">37</span></div>
-    <div class="panel-row">Fill Rate Reporting</div>
-  </div>
-</div>
+<div id="shared-panels"></div>
+<script src="shared.js"></script>
 
-<!-- MAIN WRAP -->
-<div class="wrap">
+  <!-- CONTENT -->
+  <div class="content">
   <!-- STATS HEADER -->
   <div class="stats-header">
     <div class="sh-left">
@@ -201,19 +178,19 @@ a:hover{text-decoration:underline}
       <div class="stat-num">49</div>
       <div class="stat-label">Quote Requests</div>
       <div class="stat-sub">Total Parts: 318</div>
-      <div class="stat-change" style="justify-content:center;color:#888">&#9660; 19.7% decrease</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9660; 19.7% Decrease</div>
     </div>
     <div class="stat-box" style="text-align:center;vertical-align:top">
       <div class="stat-num">31</div>
       <div class="stat-label">Orders Received</div>
       <div class="stat-sub">Total Parts: 94</div>
-      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 4.2% increase</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 4.2% Increase</div>
     </div>
     <div class="stat-box" style="text-align:center;vertical-align:top">
       <div class="stat-num">$12,450</div>
       <div class="stat-label">Total Revenue</div>
       <div class="stat-sub">$38.50 Average order value</div>
-      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 2.1% increase</div>
+      <div class="stat-change" style="justify-content:center;color:#888">&#9650; 2.1% Increase</div>
     </div>
     <div class="stat-box blue" style="display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;flex:1.5">
       <div style="display:flex;align-items:baseline;gap:6px">
@@ -229,8 +206,6 @@ a:hover{text-decoration:underline}
     <span class="material-symbols-outlined">info</span>
     Insights are shown monthly. Send at least 10 quotes and 5 orders to see your results at the start of next month.
   </div>
-
-  <!-- CARDS ROW 1 -->
   <div class="cards-section">
     <div class="cards-row">
       <div class="card">
@@ -288,9 +263,10 @@ a:hover{text-decoration:underline}
       </div>
     </div>
   </div>
+  </div><!-- end content -->
 </div>
 
-<div class="footer">Logged in as s5 <em>(Reconditioner)</em> <strong>10:09am</strong></div>
+<div class="footer"><span>Logged in as s5 <em>(Reconditioner)</em> <strong>10:09am</strong></span><a href="#">Contact PartsCheck</a></div>
 
 </body>
 </html>

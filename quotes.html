@@ -27,7 +27,7 @@ a:hover{text-decoration:underline}
 .panel-row a:hover{text-decoration:underline;color:#0645ad}
 .bdg{display:inline-block;background:linear-gradient(to bottom,#ff6644,#aa1100);color:#fff;font-size:12px;border-radius:10px;padding:3px 10px;min-width:28px;text-align:center;line-height:16px}
 .bdg-o{background:linear-gradient(to bottom,#ffaa44,#cc6600)}
-.footer{background:transparent;padding:6px 0;font-size:11px;color:#444;margin-top:6px}
+.footer{background:transparent;padding:6px 12px;font-size:11px;color:#444;margin-top:6px;display:flex;justify-content:space-between}.footer a{color:#888}
 
 /* Tabs */
 .tabs{display:flex;gap:0;margin-bottom:0}
@@ -48,31 +48,44 @@ a:hover{text-decoration:underline}
 
 /* Incoming quotes section */
 .iq-section{padding:12px 16px}
-.iq-title{font-size:15px;font-weight:bold;color:#222;margin-bottom:10px}
+.iq-title{font-size:18px;font-weight:bold;color:#222;margin-bottom:10px}
 .iq-table{width:100%;border-collapse:collapse}
-.iq-table th{text-align:left;padding:9px 10px;font-size:11px;font-weight:bold;color:#444;border-bottom:2px solid #ccc;background:#f5f5f5}
-.iq-table td{padding:10px 10px;border-bottom:1px solid #e8e8e8;vertical-align:middle;font-size:12px}
+.iq-table th{text-align:left;padding:9px 10px;font-size:12px;font-weight:bold;color:#222;border-bottom:2px solid #d0d0d0;background:#fff}
+.iq-table td{padding:12px 10px;border-bottom:1px solid #d0d0d0;vertical-align:middle;font-size:12px;background:#f5f5f5}
 .iq-table tr:last-child td{border-bottom:none}
-.iq-table tr:hover td{background:#f9f9f9}
+.iq-table tr:hover td{background:#ececec}
 
-.due-badge{display:inline-block;background:#3a8a2a;color:#fff;font-weight:bold;font-size:11px;padding:5px 10px;border-radius:3px;white-space:nowrap}
-.due-badge.overdue{background:#cc2200}
-.due-badge.soon{background:#cc7700}
+.due-cell{display:inline-block;min-width:130px;padding:8px 12px;border-radius:3px;text-align:center;font-weight:bold;font-size:12px;color:#fff;line-height:1.4}
+.due-cell.direct{background:#e8e800;color:#000}
+.due-cell.submit-late{background:#cc0000;color:#fff}
+.due-cell.due-soon{background:#267326;color:#fff}
+.due-cell.due-later{background:#3a8a2a;color:#fff}
+.due-cell.overdue{background:#cc2200;color:#fff}
+.due-cell .due-sub{font-size:10px;font-weight:normal;margin-top:2px}
 
-.quote-num{font-weight:bold;font-size:13px;color:#0645ad}
-.quote-num:hover{text-decoration:underline;cursor:pointer}
+.quote-num{font-weight:bold;font-size:13px;color:#0645ad;cursor:pointer}
+.quote-num:hover{text-decoration:underline}
 .quote-items{color:#267326;font-weight:600;font-size:11px;margin-top:2px}
 
 .purchaser-name{font-weight:bold;font-size:12px;color:#222}
 .purchaser-vehicle{color:#555;font-size:11px;margin-top:2px}
 
-.status-btns{display:flex;gap:5px;align-items:center}
+.status-btns{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
 .status-btn{border:1px solid #bbb;background:#f0f0f0;padding:4px 10px;font-size:11px;border-radius:2px;cursor:pointer;color:#333}
+.status-btn.new{color:#cc0000;font-weight:bold}
 .status-btn:hover{background:#e0e0e0}
 
+.comp-icons{display:flex;gap:4px;align-items:center}
+.comp-icon{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;border:2px solid}
+.comp-icon.ok{background:#e8f5e9;border-color:#2e7d32;color:#2e7d32}
+.comp-icon.warn{background:#fff3e0;border-color:#e65100;color:#e65100}
+.comp-icon.unknown{background:#f3e5f5;border-color:#7b1fa2;color:#7b1fa2}
+
 .action-btns{display:flex;gap:4px;align-items:center}
-.action-btn{border:none;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:2px}
-.action-btn:hover .material-symbols-outlined{color:#2b6cb0}
+.action-btn-folder{border:1px solid #ccc;background:#fff;cursor:pointer;padding:3px 5px;display:inline-flex;align-items:center;justify-content:center}
+.action-btn-folder img,.action-btn-folder span{color:#cc8800}
+.action-btn-print{border:1px solid #3a8a2a;background:#fff;cursor:pointer;padding:3px 5px;display:inline-flex;align-items:center;justify-content:center}
+.action-btn-print span{color:#3a8a2a}
 </style>
 </head>
 <body>
@@ -100,6 +113,33 @@ a:hover{text-decoration:underline}
           <path class="st2" d="M416.7,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/>
           <path class="st2" d="M443.4,14h10.9v48.5h-10.9V14ZM455.7,37.8l13.1-23.8h12.3l-13.6,23.8,14.6,24.8h-12.3l-14.1-24.8Z"/>
         </g>
+        <g>
+          <path class="st3" d="M84,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M108.5,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M122.3,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM120.8,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+          <path class="st3" d="M131.4,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+          <path class="st3" d="M140.1,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+          <path class="st3" d="M142.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+          <path class="st3" d="M158.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M167.3,72.4v-2.8h1.5v2.8h-1.5ZM167.3,87.4v-12.7h1.5v12.7h-1.5Z"/>
+          <path class="st3" d="M188.3,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M202.9,83.8c0,2.3-1,3.9-3.9,3.9s-2.4-.1-3.9-.4v5.3l-1.5.2v-18h1.4v1.2c1.4-1,2.9-1.5,4.4-1.5,2.5,0,3.6,1.2,3.6,3.5v5.8ZM195,85.9c1.4.3,2.7.4,4,.4s2.3-.8,2.3-2.6v-5.8c0-1.5-.5-2.2-2.2-2.2s-2.9.7-4.1,1.6v8.4Z"/>
+          <path class="st3" d="M206.3,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+          <path class="st3" d="M215.9,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM212.6,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M223.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+          <path class="st3" d="M239.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/>
+          <path class="st3" d="M254.9,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/>
+          <path class="st3" d="M263,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/>
+          <path class="st3" d="M269.3,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM265.9,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M285.5,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM284,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/>
+          <path class="st3" d="M304.7,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M310,87.4v-17.9l1.5-.2v18.1h-1.5Z"/>
+          <path class="st3" d="M315.4,72.4v-2.8h1.5v2.8h-1.5ZM315.4,87.4v-12.7h1.5v12.7h-1.5Z"/>
+          <path class="st3" d="M328.6,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/>
+          <path class="st3" d="M338,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM334.7,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/>
+          <path class="st3" d="M345.4,78.4c0-2.3,1-3.9,3.9-3.9s2.4.1,3.9.4v-5.3l1.5-.2v18.1h-1.4v-1.2c-1.4,1-2.9,1.5-4.3,1.5-2.5,0-3.6-1.2-3.6-3.5v-5.8ZM353.2,76.3c-1.4-.3-2.7-.4-4-.4s-2.3.8-2.3,2.6v5.8c0,1.5.5,2.2,2.2,2.2s2.9-.7,4.1-1.6v-8.4Z"/>
+          <path class="st3" d="M358.8,85.2h1.6v2.2h-1.6v-2.2Z"/>
+        </g>
       </svg>
     </div>
     <div class="topnav">
@@ -115,41 +155,8 @@ a:hover{text-decoration:underline}
     </div>
   </div>
 
-  <!-- FOUR PANELS -->
-  <div class="panels">
-    <div class="panel">
-      <div class="panel-hdr"><span class="picon">📋</span><span class="ptitle">Quotes</span></div>
-      <div class="panel-row"><a href="quotes.html">New Quote Request</a><span class="bdg">4</span></div>
-      <div class="panel-row"><a href="#">Quotes In Progress</a><span class="bdg bdg-o">7</span></div>
-    </div>
-    <div class="panel">
-      <div class="panel-hdr"><span class="picon">📦</span><span class="ptitle">My Orders</span></div>
-      <div class="panel-row"><a href="index.html">All Orders</a><span class="bdg">54</span></div>
-      <div class="panel-row"><a href="#">ETA Requests</a></div>
-      <div class="panel-row"><a href="#">ETA Overdue</a><span class="bdg">20</span></div>
-    </div>
-    <div class="panel">
-      <div class="panel-hdr">
-        <span class="picon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            <text x="9" y="16" font-size="7" fill="#fff" stroke="none" font-weight="bold">$</text>
-          </svg>
-        </span>
-        <span class="ptitle">Credit Management</span>
-      </div>
-      <div class="panel-row"><a href="#">All Credit Requests</a><span class="bdg">10</span></div>
-      <div class="panel-row"><a href="#">Credits Not Opened</a><span class="bdg">15</span></div>
-      <div class="panel-row"><a href="#">Credits Opened</a><span class="bdg bdg-o">7</span></div>
-    </div>
-    <div class="panel">
-      <div class="panel-hdr"><span class="picon">🔧</span><span class="ptitle">Reports &amp; Tools</span></div>
-      <div class="panel-row"><a href="#">Contact Us</a></div>
-      <div class="panel-row"><a href="#">New Messages</a><span class="bdg">12</span></div>
-      <div class="panel-row"><a href="#">New Feedback</a><span class="bdg">37</span></div>
-      <div class="panel-row"><a href="#">Fill Rate Reporting</a></div>
-    </div>
-  </div>
+  <div id="shared-panels"></div>
+  <script src="shared.js"></script>
 
   <!-- TABS -->
   <div class="tabs">
@@ -194,63 +201,70 @@ a:hover{text-decoration:underline}
         <table class="iq-table">
           <thead>
             <tr>
-              <th style="width:140px">Due</th>
-              <th style="width:80px">Quote</th>
+              <th style="width:155px">Due</th>
+              <th style="width:90px">Quote</th>
               <th>Purchaser</th>
-              <th>Status</th>
+              <th style="width:180px">Status</th>
+              <th style="width:110px">Competition</th>
               <th style="width:60px"></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="due-badge">Due: 75 minutes</span></td>
+              <td><div class="due-cell direct">Direct Purchase<div class="due-sub">Created 1 day ago</div></div></td>
+              <td><div class="quote-num">40413</div><div class="quote-items">4 Items</div></td>
+              <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">Toyota Corolla . 2025</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
+              <td><div class="comp-icons"></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="due-cell direct">Direct Purchase<div class="due-sub">Created 1 day ago</div></div></td>
+              <td><div class="quote-num">40413#1</div><div class="quote-items">1 Item</div></td>
+              <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">Toyota Corolla . 2025</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
+              <td><div class="comp-icons"></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+            </tr>
+            <tr>
+              <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 587 mins</div></div></td>
               <td><div class="quote-num">40517</div><div class="quote-items">5 Items</div></td>
-              <td><div class="purchaser-name">Repairhub Underwood</div><div class="purchaser-vehicle">Toyota Vios GX 2WD. 2012</div></td>
-              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
-              <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
-              </div></td>
+              <td><div class="purchaser-name">City Smash Repairs</div><div class="purchaser-vehicle">Toyota Vios GX 2WD. 2012</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
+              <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon warn">!</span><span class="comp-icon ok">✓</span><span class="comp-icon ok">✓</span></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
             </tr>
             <tr>
-              <td><span class="due-badge soon">Due: 2 hours</span></td>
-              <td><div class="quote-num">40521</div><div class="quote-items">3 Items</div></td>
-              <td><div class="purchaser-name">The Bump Shop</div><div class="purchaser-vehicle">Honda Civic VTi. 2018</div></td>
-              <td><div class="status-btns"><button class="status-btn">Opened</button></div></td>
-              <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
-              </div></td>
+              <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 557 mins</div></div></td>
+              <td><div class="quote-num">40527</div><div class="quote-items">3 Items</div></td>
+              <td><div class="purchaser-name">Metro Body Works</div><div class="purchaser-vehicle">Toyota Corolla . 2018</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
+              <td><div class="comp-icons"><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
             </tr>
             <tr>
-              <td><span class="due-badge soon">Due: 3 hours</span></td>
-              <td><div class="quote-num">40534</div><div class="quote-items">7 Items</div></td>
-              <td><div class="purchaser-name">GM Autobody Repairs</div><div class="purchaser-vehicle">Ford Ranger XLT. 2020</div></td>
-              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
-              <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
-              </div></td>
+              <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 347 mins</div></div></td>
+              <td><div class="quote-num">50300</div><div class="quote-items">4 Items</div></td>
+              <td><div class="purchaser-name">Eastside Auto Group</div><div class="purchaser-vehicle">Toyota Camry ACV40. 2006</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
+              <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon warn">!</span></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
             </tr>
             <tr>
-              <td><span class="due-badge overdue">Overdue: 15 mins</span></td>
-              <td><div class="quote-num">40498</div><div class="quote-items">2 Items</div></td>
-              <td><div class="purchaser-name">City Auto Group</div><div class="purchaser-vehicle">Mazda CX-5 Maxx. 2019</div></td>
-              <td><div class="status-btns"><button class="status-btn">Opened</button></div></td>
-              <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
-              </div></td>
+              <td><div class="due-cell due-soon">Due: 12 minutes</div></td>
+              <td><div class="quote-num">40469</div><div class="quote-items">2 Items</div></td>
+              <td><div class="purchaser-name">Central Motors</div><div class="purchaser-vehicle">Alfa Romeo Mito Sport. 2020</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
+              <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown">?</span></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
             </tr>
             <tr>
-              <td><span class="due-badge">Due: 4 hours</span></td>
-              <td><div class="quote-num">40541</div><div class="quote-items">4 Items</div></td>
-              <td><div class="purchaser-name">Metro Motors</div><div class="purchaser-vehicle">Nissan Navara ST. 2021</div></td>
-              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
-              <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
-              </div></td>
+              <td><div class="due-cell due-later">Due: 23 hr 12 min</div></td>
+              <td><div class="quote-num">40517#1</div><div class="quote-items">1 Item</div></td>
+              <td><div class="purchaser-name">FastParts Supplies</div><div class="purchaser-vehicle">Toyota Vios GX 2WD. 2012</div></td>
+              <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
+              <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown" style="border-color:#cc0000;color:#cc0000">?</span></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
             </tr>
           </tbody>
         </table>
@@ -295,7 +309,7 @@ a:hover{text-decoration:underline}
             <tr>
               <td style="font-size:11px;color:#555">25/03/2026 4:22pm</td>
               <td><div class="quote-num">40476</div><div class="quote-items">2 Items</div></td>
-              <td><div class="purchaser-name">Repairhub Underwood</div><div class="purchaser-vehicle">BMW 320i Sport. 2019</div></td>
+              <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">BMW 320i Sport. 2019</div></td>
               <td><div class="status-btns"><button class="status-btn">Submitted</button></div></td>
               <td><div class="action-btns">
                 <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
@@ -310,7 +324,7 @@ a:hover{text-decoration:underline}
   </div><!-- end content-area -->
 
 </div>
-<div class="footer">Logged in as s5 (Reconditioner) <strong>4:44pm</strong></div>
+<div class="footer"><span>Logged in as s5 <em>(Reconditioner)</em> <strong>4:44pm</strong></span><a href="#">Contact PartsCheck</a></div>
 
 <script>
 // Tab switching
