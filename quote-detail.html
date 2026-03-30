@@ -65,8 +65,8 @@ a:hover{text-decoration:underline}
 /* QUOTE OPTIONS */
 .qo-section{margin-bottom:8px}
 .qo-hdr{background:#555;color:#fff;font-weight:bold;font-size:12px;padding:5px 8px;border:1px solid #888}
-.qo-body{background:#fff;padding:10px 12px;border:1px solid #888;border-top:none;display:flex;gap:10px}
-.qo-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border:none;background:none;padding:4px 8px}
+.qo-body{background:#fff;padding:4px 6px;border:1px solid #888;border-top:none;display:flex;gap:4px}
+.qo-btn{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:none;background:none;padding:2px 4px}
 .qo-icon{width:52px;height:52px;border:2px solid #aaa;border-radius:4px;background:#e8e8e8;display:flex;align-items:center;justify-content:center}
 .qo-label{font-size:11px;color:#333;font-weight:bold}
 
@@ -84,7 +84,7 @@ a:hover{text-decoration:underline}
 .parts-input.sm{width:36px}
 .na-select{border:1px solid #aaa;font-size:10px;padding:2px 2px;background:#fff;color:#333}
 .type-cb{width:16px;height:16px;cursor:pointer;accent-color:#267326}
-.type-cell{display:flex;gap:3px;align-items:center}
+.type-cell{display:flex;gap:8px;justify-content:center;align-items:center}
 .type-sub{font-size:9px;color:#fff;text-align:center;margin-top:1px}
 .type-hdr-group{display:flex;flex-direction:column;align-items:center}
 .add-note-link{color:#0645ad;font-size:10px;cursor:pointer;white-space:nowrap}
@@ -210,56 +210,55 @@ a:hover{text-decoration:underline}
       <div class="qo-hdr">Quote Options</div>
       <div class="qo-body">
         <button class="qo-btn">
-          <div class="qo-icon" style="background:#fff8e0;border-color:#cc8800">
-            <span class="material-symbols-outlined" style="font-size:28px;color:#cc8800">mail</span>
-          </div>
-          <span class="qo-label">DMS Email</span>
+          <img src="images/icon-dms-email.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
         </button>
         <button class="qo-btn">
-          <div class="qo-icon" style="background:#e8f0ff;border-color:#3a6aaa">
-            <span class="material-symbols-outlined" style="font-size:28px;color:#3a6aaa">upload</span>
-          </div>
-          <span class="qo-label">DMS Upload</span>
+          <img src="images/icon-dms-upload.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
         </button>
         <button class="qo-btn">
-          <div class="qo-icon" style="background:#f0f0f0;border-color:#888">
-            <span class="material-symbols-outlined" style="font-size:28px;color:#555">attach_file</span>
-          </div>
-          <span class="qo-label">Attach File</span>
+          <img src="images/icon-attach-file.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
         </button>
         <button class="qo-btn">
-          <div class="qo-icon" style="background:#f0f0f0;border-color:#888">
-            <span class="material-symbols-outlined" style="font-size:28px;color:#555">filter_alt</span>
-          </div>
-          <span class="qo-label">Filter Parts</span>
+          <img src="images/icon-filter-parts.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
         </button>
         <button class="qo-btn">
-          <div class="qo-icon" style="background:#e0f0ff;border-color:#3a7fc1">
-            <span class="material-symbols-outlined" style="font-size:28px;color:#3a7fc1">photo_camera</span>
-          </div>
-          <span class="qo-label">Photos</span>
+          <img src="images/icon-dms-photos.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
         </button>
       </div>
     </div>
 
     <!-- PARTS TABLE -->
+    <div style="padding:10px 8px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:12px;color:#444">Set Est. Delivery for selected:</span>
+      <select id="bulk-delivery" class="na-select" style="width:120px" onchange="if(this.value){document.querySelectorAll('.row-select:checked').forEach(function(cb){cb.closest('tr').querySelector('.est-delivery-select').value=this.value}.bind(this));this.value=''}">
+        <option value="">-- Select --</option>
+        <option>Same Day</option>
+        <option>Next Day</option>
+        <option>2-3 Days</option>
+        <option>3-5 Days</option>
+        <option>1 Week+</option>
+        <option>TBC</option>
+      </select>
+    </div>
     <div class="parts-section">
       <table class="parts-tbl">
         <thead>
           <tr>
+            <th style="white-space:nowrap;text-align:center;cursor:pointer;font-size:11px;font-weight:normal;text-decoration:underline" onclick="var cbs=document.querySelectorAll('.row-select');var allChecked=[].every.call(cbs,function(c){return c.checked});cbs.forEach(function(c){c.checked=!allChecked})">Select All</th>
             <th style="width:24px"></th>
             <th>Description</th>
-            <th style="width:130px">Part Number</th>
-            <th style="width:36px">Qty</th>
-            <th style="width:80px;text-align:center">Total List Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
-            <th style="width:80px;text-align:center">Total Buy Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
+            <th style="width:90px">Part Number</th>
+            <th style="width:28px">Qty</th>
+            <th style="width:60px;text-align:center">List Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
+            <th style="width:60px;text-align:center">Buy Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
+            <th style="width:110px">Est. Delivery</th>
             <th style="width:120px;text-align:center">
               Type Requested<br>
-              <div style="display:flex;gap:2px;justify-content:center;margin-top:2px">
-                <span style="font-size:9px;background:#267326;padding:1px 4px;border-radius:2px">OEM</span>
-                <span style="font-size:9px;background:#aaa;padding:1px 4px;border-radius:2px">USE</span>
-                <span style="font-size:9px;background:#cc3300;padding:1px 4px;border-radius:2px">AFT</span>
-                <span style="font-size:9px;background:#cc3300;padding:1px 4px;border-radius:2px">REC</span>
+              <div style="display:flex;gap:8px;justify-content:center;margin-top:2px">
+                <span style="font-size:9px">OEM</span>
+                <span style="font-size:9px">USE</span>
+                <span style="font-size:9px">AFT</span>
+                <span style="font-size:9px">REC</span>
               </div>
             </th>
             <th style="width:70px">Notes</th>
@@ -268,45 +267,53 @@ a:hover{text-decoration:underline}
         </thead>
         <tbody>
           <tr>
+            <td style="text-align:center"><input type="checkbox" class="row-select"></td>
             <td style="color:#888;text-align:center">1</td>
             <td><strong>test1</strong></td>
-            <td><select class="na-select"><option>NOT AVAILABLE</option><option>In Stock</option></select></td>
+            <td><input class="parts-input" type="text" placeholder="Part number" style="width:80px"></td>
             <td><input class="parts-input sm" type="text" value="1"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
             <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
           <tr>
+            <td style="text-align:center"><input type="checkbox" class="row-select"></td>
             <td style="color:#888;text-align:center">2</td>
             <td><strong>tt</strong></td>
-            <td><select class="na-select"><option>NOT AVAILABLE</option><option>In Stock</option></select></td>
+            <td><input class="parts-input" type="text" placeholder="Part number" style="width:80px"></td>
             <td><input class="parts-input sm" type="text" value="1"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
             <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
           <tr>
+            <td style="text-align:center"><input type="checkbox" class="row-select"></td>
             <td style="color:#888;text-align:center">3</td>
             <td><strong>FRT BUMPER BAR</strong></td>
-            <td><input class="parts-input" type="text" value="" style="width:110px"></td>
+            <td><input class="parts-input" type="text" placeholder="Part number" style="width:80px"></td>
             <td><input class="parts-input sm" type="text" value="1"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
             <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
           <tr>
+            <td style="text-align:center"><input type="checkbox" class="row-select"></td>
             <td style="color:#888;text-align:center">4</td>
             <td><strong>R/H FRT BUMPER BAR END</strong></td>
-            <td><input class="parts-input" type="text" value="" style="width:110px"></td>
+            <td><input class="parts-input" type="text" placeholder="Part number" style="width:80px"></td>
             <td><input class="parts-input sm" type="text" value="1"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
-            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:52px"></td>
+            <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
             <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
