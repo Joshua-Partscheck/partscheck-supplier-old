@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#efefef}
+body{font-family:Arial,Helvetica,sans-serif;font-size:12px;width:888px;margin:0 auto}
+a{color:#0645ad;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{background:#efefef;padding:5px;border:1px solid #ccc}
+.topbar{padding:6px 4px;display:flex;align-items:center;justify-content:space-between}
+.topnav{display:flex;gap:12px}
+.topnav a{color:#000;font-size:13px;display:flex;align-items:center;gap:3px}
+.searchbar{display:flex;gap:2px}
+.searchbar input{padding:2px 6px;font-size:11px;border:1px solid #ccc;width:120px}
+.searchbar button{background:#5588bb;border:1px solid #3a6a99;color:#fff;padding:2px 8px;font-size:11px;cursor:pointer}
+.panels{display:flex;gap:3px;margin-top:4px;align-items:flex-start;margin-bottom:8px}
+.panel{border:1px solid #aaa;border-radius:3px;overflow:hidden;background:#fff;flex:1}
+.panel-hdr{padding:6px 8px;display:flex;align-items:center;gap:6px;background:linear-gradient(to bottom,#5296cc,#2b6cb0);min-height:38px}
+.panel-hdr .ptitle{color:#fff;font-size:15px;font-weight:bold}
+.panel-hdr .picon{font-size:18px;display:flex;align-items:center}
+.panel-row{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;border-bottom:1px dashed #d0d0d0;font-size:12px}
+.panel-row:last-child{border-bottom:none}
+.panel-row a{color:#333;font-size:12px}
+.bdg{display:inline-block;background:linear-gradient(to bottom,#ff6644,#aa1100);color:#fff;font-size:12px;border-radius:10px;padding:3px 10px;min-width:28px;text-align:center;line-height:16px}
+.bdg-o{background:linear-gradient(to bottom,#ffaa44,#cc6600)}
+.footer{background:transparent;padding:6px 12px;font-size:11px;color:#444;margin-top:6px;display:flex;justify-content:space-between}
+.footer a{color:#888}
+
+/* CONTENT */
+.content{background:#fff;padding:0}
+
+/* INFO BOXES */
+.info-row{display:flex;gap:0;margin-bottom:4px}
+.info-box{border:1px solid #aaa;flex:1}
+.info-box-hdr{background:#666;color:#fff;font-weight:bold;font-size:12px;padding:5px 8px}
+.info-box-body{padding:8px 10px}
+.info-field{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;font-size:12px}
+.info-label{color:#333;font-weight:bold;min-width:90px;flex-shrink:0}
+.info-val{color:#333}
+.info-val a{color:#0645ad}
+
+.req-box{background:#f5f500;border:1px solid #aaa;flex:1}
+.req-box .info-box-hdr{background:#666}
+.req-box .info-box-body{background:#f5f500;padding:8px 10px}
+.opt-box-hdr{background:#666;color:#fff;font-weight:bold;font-size:12px;padding:4px 8px;margin-top:4px}
+.opt-box-body{background:#f5f500;padding:6px 10px}
+
+.req-input{border:1px solid #aaa;padding:3px 5px;font-size:11px;width:110px;background:#fff}
+.req-select{border:1px solid #aaa;padding:3px 4px;font-size:11px;background:#fff}
+.req-cb{margin-right:4px}
+.req-note{font-size:10px;color:#555;margin-top:2px}
+
+/* DIRECT PURCHASE BADGE */
+.dp-badge{background:#f5f500;border:1px solid #aaa;padding:5px 10px;text-align:center;font-weight:bold;font-size:12px;display:inline-block;color:#000}
+.dp-badge .dp-sub{font-size:10px;font-weight:normal;margin-top:2px}
+
+/* WORK PROVIDER */
+.wp-section{margin-bottom:4px}
+.wp-hdr{background:#555;color:#fff;font-weight:bold;font-size:12px;padding:5px 8px;border:1px solid #888}
+.wp-body{background:#f5f500;padding:5px 8px;border:1px solid #888;border-top:none;font-size:12px;font-weight:bold;color:#333}
+
+/* QUOTE OPTIONS */
+.qo-section{margin-bottom:8px}
+.qo-hdr{background:#555;color:#fff;font-weight:bold;font-size:12px;padding:5px 8px;border:1px solid #888}
+.qo-body{background:#fff;padding:10px 12px;border:1px solid #888;border-top:none;display:flex;gap:10px}
+.qo-btn{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;border:none;background:none;padding:4px 8px}
+.qo-icon{width:52px;height:52px;border:2px solid #aaa;border-radius:4px;background:#e8e8e8;display:flex;align-items:center;justify-content:center}
+.qo-label{font-size:11px;color:#333;font-weight:bold}
+
+/* PARTS TABLE */
+.parts-section{margin-bottom:4px}
+.parts-tbl{width:100%;border-collapse:collapse;font-size:11px}
+.parts-tbl thead tr{background:#555;color:#fff}
+.parts-tbl thead th{padding:7px 6px;text-align:left;font-size:11px;font-weight:bold;border-right:1px solid #777}
+.parts-tbl thead th:last-child{border-right:none}
+.parts-tbl tbody tr{border-bottom:1px solid #ddd}
+.parts-tbl tbody tr:nth-child(even){background:#f5f5f5}
+.parts-tbl tbody td{padding:8px 6px;vertical-align:middle;border-right:1px solid #e0e0e0}
+.parts-tbl tbody td:last-child{border-right:none}
+.parts-input{border:1px solid #aaa;padding:2px 4px;font-size:11px;width:80px;background:#fff}
+.parts-input.sm{width:36px}
+.na-select{border:1px solid #aaa;font-size:10px;padding:2px 2px;background:#fff;color:#333}
+.type-cb{width:16px;height:16px;cursor:pointer;accent-color:#267326}
+.type-cell{display:flex;gap:3px;align-items:center}
+.type-sub{font-size:9px;color:#fff;text-align:center;margin-top:1px}
+.type-hdr-group{display:flex;flex-direction:column;align-items:center}
+.add-note-link{color:#0645ad;font-size:10px;cursor:pointer;white-space:nowrap}
+.add-row-btn{background:#2b6cb0;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1}
+
+/* FOOTER BAR */
+.action-bar{background:#777;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;border-top:2px solid #555;margin-top:4px}
+.action-bar-btn{border:1px solid #555;background:#888;color:#fff;padding:5px 14px;font-size:12px;cursor:pointer;font-weight:bold}
+.action-bar-btn:hover{background:#999}
+.action-bar-right{display:flex;gap:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="48" viewBox="0 0 482.2 92.8"><defs><style>.st0{fill:#85c776}.st1{fill:#57a84c}.st2{fill:#0db14b}.st3{fill:#595a5c}</style></defs><polygon class="st1" points="61.1 63.6 51.6 58.3 51.6 58.3 5.3 54.1 0 63.6 61.1 63.6 61.1 63.6"/><polygon class="st0" points="5.3 54.1 9.5 7.8 0 2.5 0 2.5 0 63.6 0 63.6 5.3 54.1 5.3 54.1"/><path class="st2" d="M11.8,26.1c1.3-1.3,2.6-2.5,4.1-3.9,4.7,3.3,9.4,6.6,14.3,10.1.5-.7,1.1-1.3,1.6-2,8.3-10.6,17.7-20.2,28.5-28.4C62.9,0,65.5-.2,68.9.2c-16,15.5-27.4,33.9-38.6,52.5-6.2-8.8-12.3-17.6-18.6-26.6Z"/><path class="st1" d="M9.5,7.8l34.5,3.1c3.1-3,6.2-5.8,9.4-8.5H0l9.5,5.3h0Z"/><path class="st0" d="M54.9,21.9l-3.3,36.4,9.5,5.3V14c-2.1,2.5-4.2,5.2-6.2,7.8Z"/><g><path class="st3" d="M99.3,47.8h-8.3v14.7h-10.9V14h19.8c11.8,0,16.2,4.7,16.2,13.8v6.3c0,9.1-5,13.7-16.8,13.7ZM105.2,28.8c0-3.5-1.2-5.1-5.8-5.1h-8.3v14.6h8.3c4.8,0,5.8-1.8,5.8-5.3v-4.2Z"/><path class="st3" d="M160,62.6h-11.4l-2.6-9.5h-16.3l-2.6,9.5h-11.4l14.8-48.5h14.6l14.9,48.5ZM132.3,44h11.1l-5.5-20.3-5.6,20.3Z"/><path class="st3" d="M182.4,47.5h-6.4v15.1h-10.9V14h20.2c11.8,0,16.2,4.7,16.2,13.8v6c0,6-2.2,10.1-7.1,12.2l11.7,16.6h-13l-10.7-15.1ZM190.5,28.8c0-3.6-1.4-5.1-5.8-5.1h-8.7v14.3h8.7c4.7,0,5.8-1.7,5.8-5.3v-3.9Z"/><path class="st3" d="M230.9,23.7v38.8h-10.9V23.7h-13v-9.7h37v9.7h-13Z"/><path class="st3" d="M263.6,63.3c-5.6,0-11.5-1.2-15.7-3.1l1.8-8.5c4.4,1.4,9,2.3,14,2.3s6.7-1.1,6.7-5.2-.2-4.9-8.2-6.6c-11.7-2.6-13.5-4.9-13.5-15.4s3.4-13.6,16.8-13.6,9.3.4,14.7,1.6l-1.1,9.2c-5.5-.9-9.1-1.4-13.5-1.4s-6,.9-6,4.4.2,4.7,7.9,6.6c13.1,3.1,13.8,5.7,13.8,15.2s-3.1,14.4-17.8,14.4Z"/><path class="st2" d="M297.8,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/><path class="st2" d="M351.1,62.6v-19.5h-15.7v19.5h-10.9V14h10.9v19.3h15.7V14h10.9v48.5h-10.9Z"/><path class="st2" d="M369.6,62.6V14h30.5v9.7h-19.6v8.9h18.1v9.7h-18.1v10.6h19.6v9.7h-30.5Z"/><path class="st2" d="M416.7,46.7c0,4.2,1.4,6.7,6.8,6.7s8.3-.4,12.5-1.2l1.5,9.5c-4.8,1-9.2,1.5-14.1,1.5-12.2,0-17.7-6-17.7-14.9v-20.3c0-8.8,5.5-14.9,17.7-14.9s9.3.5,14.1,1.5l-1.5,9.5c-4.2-.7-9-1.2-12.5-1.2-5.4,0-6.8,2.5-6.8,6.7v16.8Z"/><path class="st2" d="M443.4,14h10.9v48.5h-10.9V14ZM455.7,37.8l13.1-23.8h12.3l-13.6,23.8,14.6,24.8h-12.3l-14.1-24.8Z"/></g><g><path class="st3" d="M84,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/><path class="st3" d="M108.5,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/><path class="st3" d="M122.3,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM120.8,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/><path class="st3" d="M131.4,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/><path class="st3" d="M140.1,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/><path class="st3" d="M142.8,85.2h1.6v2.2h-1.6v-2.2Z"/><path class="st3" d="M158.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/><path class="st3" d="M167.3,72.4v-2.8h1.5v2.8h-1.5ZM167.3,87.4v-12.7h1.5v12.7h-1.5Z"/><path class="st3" d="M188.3,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/><path class="st3" d="M202.9,83.8c0,2.3-1,3.9-3.9,3.9s-2.4-.1-3.9-.4v5.3l-1.5.2v-18h1.4v1.2c1.4-1,2.9-1.5,4.4-1.5,2.5,0,3.6,1.2,3.6,3.5v5.8ZM195,85.9c1.4.3,2.7.4,4,.4s2.3-.8,2.3-2.6v-5.8c0-1.5-.5-2.2-2.2-2.2s-2.9.7-4.1,1.6v8.4Z"/><path class="st3" d="M206.3,87.4v-17.9l1.5-.2v18.1h-1.5Z"/><path class="st3" d="M215.9,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM212.6,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/><path class="st3" d="M223.8,85.2h1.6v2.2h-1.6v-2.2Z"/><path class="st3" d="M239.3,87.7c-1.5,0-3.4-.3-4.9-.8l.3-1.2c1.6.5,3.2.7,4.7.7,3,0,3.8-.9,3.8-3.1s0-3-3.9-3.9c-4.2-1-4.7-1.7-4.7-5.2s1-4.3,5.4-4.3,3.3.3,4.5.6l-.2,1.3c-1.3-.3-2.9-.5-4.2-.5-3.4,0-3.9.8-3.9,3s0,2.9,3.7,3.9c4.6,1.1,4.8,1.8,4.8,5.1s-1,4.6-5.4,4.6Z"/><path class="st3" d="M254.9,87.2c-.7.3-1.7.5-2.7.5-2,0-2.9-.7-2.9-2.7v-8.9h-2.4v-1.3h2.4v-3l1.5-.2v3.2h3.9l-.2,1.3h-3.7v8.8c0,1.1.2,1.6,1.5,1.6s1.5-.1,2.3-.4l.3,1.2Z"/><path class="st3" d="M263,76c-1.3.6-2.8,1.5-4,2.3v9.1h-1.5v-12.7h1.4v1.9c1.4-.9,2.8-1.7,4-2.2l.2,1.5Z"/><path class="st3" d="M269.3,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM265.9,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/><path class="st3" d="M285.5,87.4h-1.3v-1c-1.3.8-2.7,1.2-4.4,1.2s-3.3-1.3-3.3-3.5,1.2-3.5,3.7-3.5h3.8v-2.5c0-1.7-.9-2.3-3-2.3s-2.6.2-3.8.4l-.2-1.3c1-.3,2.6-.5,3.9-.5,3.3,0,4.6,1.3,4.6,3.7v9.3ZM284,82h-3.7c-1.7,0-2.3.5-2.3,2.2s.3,2.2,2.1,2.2,2.7-.5,3.9-1.3v-3Z"/><path class="st3" d="M304.7,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.1.5,2.4,1.4c1.5-.7,3.8-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/><path class="st3" d="M310,87.4v-17.9l1.5-.2v18.1h-1.5Z"/><path class="st3" d="M315.4,72.4v-2.8h1.5v2.8h-1.5ZM315.4,87.4v-12.7h1.5v12.7h-1.5Z"/><path class="st3" d="M328.6,87.4v-10.3c0-.9-.5-1.3-1.4-1.3s-3.3.6-4.9,1.5v10.1h-1.5v-12.7h1.3v1.1c1.5-.7,3.7-1.4,5.3-1.4s2.7,1.1,2.7,2.9v10.1h-1.5Z"/><path class="st3" d="M338,86.4c1.3,0,2.8-.3,4-.6l.3,1.2c-1.2.4-2.8.7-4.4.7-3.6,0-4.7-1.8-4.7-4.6v-4c0-2.6,1.2-4.6,4.7-4.6s4.6,2,4.6,4.6v2.4h-7.8v1.6c0,2.3.8,3.2,3.3,3.2ZM334.7,80.2h6.4v-1.1c0-2.1-.8-3.3-3.1-3.3s-3.2,1.1-3.2,3.3v1.1Z"/><path class="st3" d="M345.4,78.4c0-2.3,1-3.9,3.9-3.9s2.4.1,3.9.4v-5.3l1.5-.2v18.1h-1.4v-1.2c-1.4,1-2.9,1.5-4.3,1.5-2.5,0-3.6-1.2-3.6-3.5v-5.8ZM353.2,76.3c-1.4-.3-2.7-.4-4-.4s-2.3.8-2.3,2.6v5.8c0,1.5.5,2.2,2.2,2.2s2.9-.7,4.1-1.6v-8.4Z"/><path class="st3" d="M358.8,85.2h1.6v2.2h-1.6v-2.2Z"/></g></svg>
+    </div>
+    <div class="topnav">
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a href="#">👤 TeamViewer</a>
+      <a href="#">📊 Reports</a>
+      <a href="#">⚙ Settings</a>
+      <a href="#">🔓 Logout</a>
+    </div>
+    <div class="searchbar">
+      <input placeholder="Search here">
+      <button>🔍</button>
+    </div>
+  </div>
+
+  <div id="shared-panels"></div>
+  <script src="shared.js"></script>
+
+  <!-- CONTENT -->
+  <div class="content" style="padding:6px">
+
+    <!-- TOP 3 INFO BOXES -->
+    <div class="info-row" style="gap:4px;margin-bottom:4px">
+
+      <!-- General Info -->
+      <div class="info-box">
+        <div class="info-box-hdr">General Info</div>
+        <div class="info-box-body">
+          <div class="info-field">
+            <span class="info-label">Request Type</span>
+            <div class="dp-badge">Direct Purchase<div class="dp-sub">Supply: 11/03/2026</div></div>
+          </div>
+          <div class="info-field" style="margin-top:8px">
+            <span class="info-label">Purchaser</span>
+            <div class="info-val">
+              <a href="#">Auto Repair Centre</a><br>
+              15 Ellen St<br>
+              Logan Central, QLD<br>
+              Ph: 07 38082170
+            </div>
+          </div>
+          <div class="info-field">
+            <span class="info-label">Estimator</span>
+            <span class="info-val"><a href="#">John Smith</a></span>
+          </div>
+          <div class="info-field">
+            <span class="info-label">Reference</span>
+            <span class="info-val"><a href="#">40413</a></span>
+          </div>
+          <div class="info-field">
+            <span class="info-label">Quote Status</span>
+            <span class="info-val">Opened</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vehicle Info -->
+      <div class="info-box">
+        <div class="info-box-hdr">Vehicle Info</div>
+        <div class="info-box-body">
+          <div class="info-field"><span class="info-label">Make</span><span class="info-val">Toyota</span></div>
+          <div class="info-field"><span class="info-label">Model</span><span class="info-val">Corolla</span></div>
+          <div class="info-field"><span class="info-label">Model Nr</span><span class="info-val"></span></div>
+          <div class="info-field"><span class="info-label">Series</span><span class="info-val"></span></div>
+          <div class="info-field"><span class="info-label">Trans</span><span class="info-val">A</span></div>
+          <div class="info-field"><span class="info-label">Colour</span><span class="info-val">Mat Red</span></div>
+          <div class="info-field"><span class="info-label">VIN</span><span class="info-val"><input type="text" value="MR053REH205309076" style="border:1px solid #aaa;padding:2px 4px;font-size:11px;width:140px"></span></div>
+          <div class="info-field"><span class="info-label">Body</span><span class="info-val">4 DOOR Sedan4Door</span></div>
+          <div class="info-field"><span class="info-label">Mth/Yr</span><span class="info-val">1/2025</span></div>
+          <div class="info-field"><span class="info-label">Veh Reg</span><span class="info-val">55FHR</span></div>
+          <div class="info-field"><span class="info-label">Claim Nr</span><span class="info-val">NRP05456200</span></div>
+        </div>
+      </div>
+
+      <!-- Required Info -->
+      <div class="req-box">
+        <div class="info-box-hdr">Required Info</div>
+        <div class="info-box-body" style="background:#f5f500">
+          <div class="info-field"><span class="info-label">Quote Nr</span><input class="req-input" type="text" value=""></div>
+          <div class="info-field"><span class="info-label">Quote Expiry</span><input class="req-input" type="text" value="17/04/2026"> <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;cursor:pointer;color:#555">calendar_month</span></div>
+          <div class="info-field"><span class="info-label">Est. Delivery</span><select class="req-select"><option>Next Day</option><option>Same Day</option><option>2-3 Days</option></select></div>
+          <div class="info-field" style="align-items:center"><input type="checkbox" class="req-cb"><span style="font-size:10px;color:#555">Set above estimate delivery as Default</span></div>
+        </div>
+        <div class="opt-box-hdr">Optional Info</div>
+        <div class="opt-box-body">
+          <div class="info-field"><span class="info-label">Internal Status</span><select class="req-select"><option>API Assigned</option><option>Not Assigned</option></select></div>
+          <div class="info-field"><span class="info-label">Sales Rep <span class="material-symbols-outlined" style="font-size:13px;vertical-align:middle">edit</span></span><select class="req-select"><option>Not Selected</option></select></div>
+          <div class="info-field"><span class="info-label">Est. Freight</span><input class="req-input" type="text" value=""></div>
+          <div class="info-field"><span class="info-label">Settlement %</span><input class="req-input" type="text" value="0.00"></div>
+          <div class="info-field"><span class="info-label"></span><a href="#" style="font-size:10px">What is this?</a></div>
+          <div class="info-field" style="align-items:center"><span class="info-label">Take Ownership</span><input type="checkbox" class="req-cb"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WORK PROVIDER -->
+    <div class="wp-section">
+      <div class="wp-hdr">Work Provider</div>
+      <div class="wp-body">Insurance Australia Limited</div>
+    </div>
+
+    <!-- QUOTE OPTIONS -->
+    <div class="qo-section">
+      <div class="qo-hdr">Quote Options</div>
+      <div class="qo-body">
+        <button class="qo-btn">
+          <div class="qo-icon" style="background:#fff8e0;border-color:#cc8800">
+            <span class="material-symbols-outlined" style="font-size:28px;color:#cc8800">mail</span>
+          </div>
+          <span class="qo-label">DMS Email</span>
+        </button>
+        <button class="qo-btn">
+          <div class="qo-icon" style="background:#e8f0ff;border-color:#3a6aaa">
+            <span class="material-symbols-outlined" style="font-size:28px;color:#3a6aaa">upload</span>
+          </div>
+          <span class="qo-label">DMS Upload</span>
+        </button>
+        <button class="qo-btn">
+          <div class="qo-icon" style="background:#f0f0f0;border-color:#888">
+            <span class="material-symbols-outlined" style="font-size:28px;color:#555">attach_file</span>
+          </div>
+          <span class="qo-label">Attach File</span>
+        </button>
+        <button class="qo-btn">
+          <div class="qo-icon" style="background:#f0f0f0;border-color:#888">
+            <span class="material-symbols-outlined" style="font-size:28px;color:#555">filter_alt</span>
+          </div>
+          <span class="qo-label">Filter Parts</span>
+        </button>
+        <button class="qo-btn">
+          <div class="qo-icon" style="background:#e0f0ff;border-color:#3a7fc1">
+            <span class="material-symbols-outlined" style="font-size:28px;color:#3a7fc1">photo_camera</span>
+          </div>
+          <span class="qo-label">Photos</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PARTS TABLE -->
+    <div class="parts-section">
+      <table class="parts-tbl">
+        <thead>
+          <tr>
+            <th style="width:24px"></th>
+            <th>Description</th>
+            <th style="width:130px">Part Number</th>
+            <th style="width:36px">Qty</th>
+            <th style="width:80px;text-align:center">Total List Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
+            <th style="width:80px;text-align:center">Total Buy Price<br><span style="font-weight:normal;font-size:10px">ex GST</span></th>
+            <th style="width:120px;text-align:center">
+              Type Requested<br>
+              <div style="display:flex;gap:2px;justify-content:center;margin-top:2px">
+                <span style="font-size:9px;background:#267326;padding:1px 4px;border-radius:2px">OEM</span>
+                <span style="font-size:9px;background:#aaa;padding:1px 4px;border-radius:2px">USE</span>
+                <span style="font-size:9px;background:#cc3300;padding:1px 4px;border-radius:2px">AFT</span>
+                <span style="font-size:9px;background:#cc3300;padding:1px 4px;border-radius:2px">REC</span>
+              </div>
+            </th>
+            <th style="width:70px">Notes</th>
+            <th style="width:24px">Alt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:#888;text-align:center">1</td>
+            <td><strong>test1</strong></td>
+            <td><select class="na-select"><option>NOT AVAILABLE</option><option>In Stock</option></select></td>
+            <td><input class="parts-input sm" type="text" value="1"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><a href="#" class="add-note-link">Add Notes</a></td>
+            <td><button class="add-row-btn">+</button></td>
+          </tr>
+          <tr>
+            <td style="color:#888;text-align:center">2</td>
+            <td><strong>tt</strong></td>
+            <td><select class="na-select"><option>NOT AVAILABLE</option><option>In Stock</option></select></td>
+            <td><input class="parts-input sm" type="text" value="1"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><a href="#" class="add-note-link">Add Notes</a></td>
+            <td><button class="add-row-btn">+</button></td>
+          </tr>
+          <tr>
+            <td style="color:#888;text-align:center">3</td>
+            <td><strong>FRT BUMPER BAR</strong></td>
+            <td><input class="parts-input" type="text" value="" style="width:110px"></td>
+            <td><input class="parts-input sm" type="text" value="1"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><a href="#" class="add-note-link">Add Notes</a></td>
+            <td><button class="add-row-btn">+</button></td>
+          </tr>
+          <tr>
+            <td style="color:#888;text-align:center">4</td>
+            <td><strong>R/H FRT BUMPER BAR END</strong></td>
+            <td><input class="parts-input" type="text" value="" style="width:110px"></td>
+            <td><input class="parts-input sm" type="text" value="1"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><input class="parts-input" type="text" value="" style="width:70px"></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><a href="#" class="add-note-link">Add Notes</a></td>
+            <td><button class="add-row-btn">+</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="action-bar">
+      <div>
+        <button class="action-bar-btn" onclick="history.back()">Back</button>
+        <button class="action-bar-btn" style="margin-left:4px">No Parts Available</button>
+      </div>
+      <div class="action-bar-right">
+        <button class="action-bar-btn">Save Prices</button>
+      </div>
+    </div>
+
+  </div><!-- end content -->
+
+</div>
+<div class="footer"><span>Logged in as s2 <em>(OEM Dealer)</em> <strong>8:21am</strong></span><a href="#">Contact PartsCheck</a></div>
+
+</body>
+</html>
