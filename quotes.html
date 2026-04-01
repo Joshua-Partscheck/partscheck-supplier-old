@@ -39,12 +39,8 @@ a:hover{text-decoration:underline}
 .content-area{background:#fff;border:1px solid #bbb;padding:0}
 
 /* Reload bar */
-.reload-bar{text-align:center;padding:10px;border-bottom:1px solid #e0e0e0}
-.reload-bar .reload-title{font-weight:bold;font-size:13px;color:#444;margin-bottom:4px}
-.reload-bar .reload-sub{font-size:11px;color:#888;margin-bottom:10px}
-.cutoff-btns{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.cutoff-btn{background:linear-gradient(to bottom,#4a6aa8,#2b4f8c);color:#fff;border:none;padding:8px 14px;border-radius:3px;font-size:11px;font-weight:bold;cursor:pointer;text-align:center;line-height:1.4}
-.cutoff-btn:hover{background:linear-gradient(to bottom,#5a7ab8,#3b5f9c)}
+.reload-bar{text-align:center;padding:32px 10px;border-bottom:1px solid #e0e0e0}
+.reload-bar .reload-title{font-weight:bold;font-size:11px;color:#444}
 
 /* Incoming quotes section */
 .iq-section{padding:12px 16px}
@@ -86,6 +82,10 @@ a:hover{text-decoration:underline}
 .action-btn-folder img,.action-btn-folder span{color:#cc8800}
 .action-btn-print{border:1px solid #3a8a2a;background:#fff;cursor:pointer;padding:3px 5px;display:inline-flex;align-items:center;justify-content:center}
 .action-btn-print span{color:#3a8a2a}
+.action-btn{border:1px solid #ccc;background:#fff;cursor:pointer;padding:3px 5px;display:inline-flex;align-items:center;justify-content:center}
+.icon-folder{font-size:20px;color:#cc8800}
+.icon-print{font-size:20px;color:#3a8a2a}
+.icon-grey{font-size:20px;color:#666}
 </style>
 </head>
 <body>
@@ -187,13 +187,6 @@ a:hover{text-decoration:underline}
     <div id="tab-incoming">
       <div class="reload-bar">
         <div class="reload-title">Automatically Reloaded in <span id="countdown">37</span> Seconds</div>
-        <div class="reload-sub">Auto Cut Off counters refer to any quote that was not quoted within the available timeframe.</div>
-        <div class="cutoff-btns">
-          <button class="cutoff-btn">1x Auto Cut Off<br>19/03/2026</button>
-          <button class="cutoff-btn">1x Auto Cut Off<br>20/03/2026</button>
-          <button class="cutoff-btn">3x Auto Cut Off<br>24/03/2026</button>
-          <button class="cutoff-btn">1x Auto Cut Off<br>25/03/2026</button>
-        </div>
       </div>
 
       <div class="iq-section">
@@ -216,7 +209,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">Toyota Corolla . 2025</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
               <td><div class="comp-icons"></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell direct">Direct Purchase<div class="due-sub">Created 1 day ago</div></div></td>
@@ -224,7 +217,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">Toyota Corolla . 2025</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn">Opened</button></div></td>
               <td><div class="comp-icons"></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 587 mins</div></div></td>
@@ -232,7 +225,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">City Smash Repairs</div><div class="purchaser-vehicle">Toyota Vios GX 2WD. 2012</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
               <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon warn">!</span><span class="comp-icon ok">✓</span><span class="comp-icon ok">✓</span></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 557 mins</div></div></td>
@@ -240,7 +233,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Metro Body Works</div><div class="purchaser-vehicle">Toyota Corolla . 2018</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
               <td><div class="comp-icons"><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span><span class="comp-icon warn">!</span></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell submit-late">Submit Late<div class="due-sub">Overdue by 347 mins</div></div></td>
@@ -248,7 +241,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Eastside Auto Group</div><div class="purchaser-vehicle">Toyota Camry ACV40. 2006</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
               <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon warn">!</span></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell due-soon">Due: 12 minutes</div></td>
@@ -256,7 +249,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Central Motors</div><div class="purchaser-vehicle">Alfa Romeo Mito Sport. 2020</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
               <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown">?</span></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
             <tr>
               <td><div class="due-cell due-later">Due: 23 hr 12 min</div></td>
@@ -264,7 +257,7 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">FastParts Supplies</div><div class="purchaser-vehicle">Toyota Vios GX 2WD. 2012</div></td>
               <td><div class="status-btns"><button class="status-btn">API Assigned</button><button class="status-btn new">New</button></div></td>
               <td><div class="comp-icons"><span class="comp-icon ok">✓</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown">?</span><span class="comp-icon unknown" style="border-color:#cc0000;color:#cc0000">?</span></div></td>
-              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#cc8800">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#3a8a2a">print</span></button></div></td>
+              <td><div class="action-btns"><button class="action-btn-folder" title="Open"><span class="material-symbols-outlined icon-folder">folder</span></button><button class="action-btn-print" title="Print"><span class="material-symbols-outlined icon-print">print</span></button></div></td>
             </tr>
           </tbody>
         </table>
@@ -292,8 +285,8 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">SpeedParts Ltd</div><div class="purchaser-vehicle">Toyota Corolla Ascent. 2017</div></td>
               <td><div class="status-btns"><button class="status-btn">Submitted</button></div></td>
               <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
+                <button class="action-btn" title="Open"><span class="material-symbols-outlined icon-grey">folder_open</span></button>
+                <button class="action-btn" title="Print"><span class="material-symbols-outlined icon-grey">print</span></button>
               </div></td>
             </tr>
             <tr>
@@ -302,8 +295,8 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">AutoParts Co</div><div class="purchaser-vehicle">Subaru Outback 2.5i. 2016</div></td>
               <td><div class="status-btns"><button class="status-btn">Submitted</button></div></td>
               <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
+                <button class="action-btn" title="Open"><span class="material-symbols-outlined icon-grey">folder_open</span></button>
+                <button class="action-btn" title="Print"><span class="material-symbols-outlined icon-grey">print</span></button>
               </div></td>
             </tr>
             <tr>
@@ -312,8 +305,8 @@ a:hover{text-decoration:underline}
               <td><div class="purchaser-name">Auto Repair Centre</div><div class="purchaser-vehicle">BMW 320i Sport. 2019</div></td>
               <td><div class="status-btns"><button class="status-btn">Submitted</button></div></td>
               <td><div class="action-btns">
-                <button class="action-btn" title="Open"><span class="material-symbols-outlined" style="font-size:20px;color:#666">folder_open</span></button>
-                <button class="action-btn" title="Print"><span class="material-symbols-outlined" style="font-size:20px;color:#666">print</span></button>
+                <button class="action-btn" title="Open"><span class="material-symbols-outlined icon-grey">folder_open</span></button>
+                <button class="action-btn" title="Print"><span class="material-symbols-outlined icon-grey">print</span></button>
               </div></td>
             </tr>
           </tbody>

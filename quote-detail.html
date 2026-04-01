@@ -67,8 +67,12 @@ a:hover{text-decoration:underline}
 .qo-hdr{background:#555;color:#fff;font-weight:bold;font-size:12px;padding:5px 8px;border:1px solid #888}
 .qo-body{background:#fff;padding:4px 6px;border:1px solid #888;border-top:none;display:flex;gap:4px}
 .qo-btn{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:none;background:none;padding:2px 4px}
-.qo-icon{width:52px;height:52px;border:2px solid #aaa;border-radius:4px;background:#e8e8e8;display:flex;align-items:center;justify-content:center}
 .qo-label{font-size:11px;color:#333;font-weight:bold}
+.qo-img{width:100px;height:100px;object-fit:contain;display:block;margin:0 auto}
+
+/* BULK DELIVERY BAR */
+.bulk-bar{padding:10px 8px;display:flex;align-items:center;gap:8px}
+.bulk-bar span{font-size:12px;color:#444}
 
 /* PARTS TABLE */
 .parts-section{margin-bottom:4px}
@@ -83,7 +87,11 @@ a:hover{text-decoration:underline}
 .parts-input{border:1px solid #aaa;padding:2px 4px;font-size:11px;width:80px;background:#fff}
 .parts-input.sm{width:36px}
 .na-select{border:1px solid #aaa;font-size:10px;padding:2px 2px;background:#fff;color:#333}
-.type-cb{width:16px;height:16px;cursor:pointer;accent-color:#267326}
+.type-cb{width:16px;height:16px;cursor:pointer}
+.type-cb.oem{accent-color:#267326}
+.type-cb.use{accent-color:#aaa}
+.type-cb.aft{accent-color:#cc3300}
+.type-cb.rec{accent-color:#cc3300}
 .type-cell{display:flex;gap:8px;justify-content:center;align-items:center}
 .type-sub{font-size:9px;color:#fff;text-align:center;margin-top:1px}
 .type-hdr-group{display:flex;flex-direction:column;align-items:center}
@@ -210,26 +218,26 @@ a:hover{text-decoration:underline}
       <div class="qo-hdr">Quote Options</div>
       <div class="qo-body">
         <button class="qo-btn">
-          <img src="images/icon-dms-email.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
+          <img src="images/icon-dms-email.png" class="qo-img">
         </button>
         <button class="qo-btn">
-          <img src="images/icon-dms-upload.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
+          <img src="images/icon-dms-upload.png" class="qo-img">
         </button>
         <button class="qo-btn">
-          <img src="images/icon-attach-file.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
+          <img src="images/icon-attach-file.png" class="qo-img">
         </button>
         <button class="qo-btn">
-          <img src="images/icon-filter-parts.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
+          <img src="images/icon-filter-parts.png" class="qo-img">
         </button>
         <button class="qo-btn">
-          <img src="images/icon-dms-photos.png" style="width:100px;height:100px;object-fit:contain;display:block;margin:0 auto">
+          <img src="images/icon-dms-photos.png" class="qo-img">
         </button>
       </div>
     </div>
 
     <!-- PARTS TABLE -->
-    <div style="padding:10px 8px;display:flex;align-items:center;gap:8px">
-      <span style="font-size:12px;color:#444">Set Est. Delivery for selected:</span>
+    <div class="bulk-bar">
+      <span>Set Est. Delivery for selected:</span>
       <select id="bulk-delivery" class="na-select" style="width:120px" onchange="if(this.value){document.querySelectorAll('.row-select:checked').forEach(function(cb){cb.closest('tr').querySelector('.est-delivery-select').value=this.value}.bind(this));this.value=''}">
         <option value="">-- Select --</option>
         <option>Same Day</option>
@@ -275,7 +283,7 @@ a:hover{text-decoration:underline}
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
-            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb oem" checked><input type="checkbox" class="type-cb use"><input type="checkbox" class="type-cb aft"><input type="checkbox" class="type-cb rec"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
@@ -288,7 +296,7 @@ a:hover{text-decoration:underline}
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
-            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb oem" checked><input type="checkbox" class="type-cb use"><input type="checkbox" class="type-cb aft"><input type="checkbox" class="type-cb rec"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
@@ -301,7 +309,7 @@ a:hover{text-decoration:underline}
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
-            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb oem" checked><input type="checkbox" class="type-cb use"><input type="checkbox" class="type-cb aft"><input type="checkbox" class="type-cb rec"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
@@ -314,7 +322,7 @@ a:hover{text-decoration:underline}
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><input class="parts-input" type="text" value="" style="width:52px"></td>
             <td><select class="na-select est-delivery-select" style="width:100%"><option>Same Day</option><option>Next Day</option><option>2-3 Days</option><option>3-5 Days</option><option>1 Week+</option><option>TBC</option></select></td>
-            <td><div class="type-cell"><input type="checkbox" class="type-cb" checked style="accent-color:#267326"><input type="checkbox" class="type-cb" style="accent-color:#aaa"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"><input type="checkbox" class="type-cb" style="accent-color:#cc3300"></div></td>
+            <td><div class="type-cell"><input type="checkbox" class="type-cb oem" checked><input type="checkbox" class="type-cb use"><input type="checkbox" class="type-cb aft"><input type="checkbox" class="type-cb rec"></div></td>
             <td><a href="#" class="add-note-link">Add Notes</a></td>
             <td><button class="add-row-btn">+</button></td>
           </tr>
