@@ -255,7 +255,7 @@ a:hover{text-decoration:underline}
       <table class="parts-tbl">
         <thead>
           <tr>
-            <th style="white-space:nowrap;text-align:center;cursor:pointer;font-size:11px;font-weight:normal;text-decoration:underline" onclick="var cbs=document.querySelectorAll('.row-select');var allChecked=[].every.call(cbs,function(c){return c.checked});cbs.forEach(function(c){c.checked=!allChecked})">Select All</th>
+            <th style="text-align:center"><input type="checkbox" id="select-all-cb" title="Select / Deselect All" onclick="document.querySelectorAll('.row-select').forEach(function(c){c.checked=document.getElementById('select-all-cb').checked})"></th>
             <th style="width:24px"></th>
             <th>Description</th>
             <th style="width:90px">Part Number</th>
