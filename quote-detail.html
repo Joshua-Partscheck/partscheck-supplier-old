@@ -238,7 +238,7 @@ a:hover{text-decoration:underline}
     <!-- PARTS TABLE -->
     <div class="bulk-bar">
       <span>Set Est. Delivery for selected:</span>
-      <select id="bulk-delivery" class="na-select" style="width:120px" onchange="document.querySelectorAll('.row-select:checked').forEach(function(cb){cb.closest('tr').querySelector('.est-delivery-select').value=this.value}.bind(this));">
+      <select id="bulk-delivery" class="na-select" style="width:120px" onmousedown="this.value='__x__'" onchange="document.querySelectorAll('.row-select:checked').forEach(function(cb){cb.closest('tr').querySelector('.est-delivery-select').value=this.value}.bind(this));">
         <option value=""></option>
         <option>Same Day</option>
         <option>1-2 Days</option>
