@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "partscheck-supplier",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-l", "3000", "C:\\Users\\JoshuaTownsend\\Documents\\GitHub\\partscheck-supplier-old"],
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "serve.bat"],
       "port": 3000,
       "autoPort": true
     }
